@@ -1,9 +1,18 @@
 package com.orsys.groupe4.projetplage.business;
 
-public class Concessionnaire extends Utilisateur {
+import javax.persistence.Entity;
 
-	public Concessionnaire() {
-	}
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+import lombok.ToString;
+
+@Entity
+@Getter
+@Setter
+@NoArgsConstructor
+@ToString
+public class Concessionnaire extends Utilisateur {
 
 	private String numeroDeTelephone;
 
