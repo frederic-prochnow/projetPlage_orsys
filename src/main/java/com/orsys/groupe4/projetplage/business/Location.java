@@ -3,16 +3,8 @@ package com.orsys.groupe4.projetplage.business;
 import java.time.LocalDateTime;
 import java.util.List;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.FetchType;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.Inheritance;
-import javax.persistence.InheritanceType;
-import javax.persistence.OneToMany;
-import javax.persistence.OneToOne;
+import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -40,10 +32,11 @@ public class Location {
 	@Column(length = 300)
 	private String remarques;
 
-	@OneToMany(mappedBy = "locations", fetch = FetchType.EAGER)
-	private List<Parasol> parasols;
+	@NotNull
+	@ManyToOne
+	private Parasol parasols;
 
-	@OneToOne
+	@ManyToOne
 	private Locataire locataire;
 
 	@OneToOne

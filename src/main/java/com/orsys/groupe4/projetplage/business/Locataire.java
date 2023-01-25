@@ -3,10 +3,7 @@ package com.orsys.groupe4.projetplage.business;
 import java.time.LocalDateTime;
 import java.util.List;
 
-import javax.persistence.Entity;
-import javax.persistence.FetchType;
-import javax.persistence.OneToMany;
-import javax.persistence.OneToOne;
+import javax.persistence.*;
 
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -28,6 +25,6 @@ public class Locataire extends Utilisateur {
 	@OneToOne
 	private LienDeParente lienDeParente;
 	
-	@OneToOne
+	@ManyToOne
 	private Pays pays;
 }
