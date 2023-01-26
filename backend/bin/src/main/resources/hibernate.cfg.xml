@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-configuration PUBLIC
+        "-//Hibernate/Hibernate Configuration DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
+<hibernate-configuration>
+    <session-factory>
+        <property name="hibernate.dialect">org.hibernate.dialect.PostgreSQL82Dialect</property>
+        <property name="hibernate.connection.driver_class">org.postgresql.Driver</property>
+        <property name="hibernate.connection.username">postgres</property>
+        <property name="hibernate.connection.password">1234</property>
+        <property name="hibernate.connection.url">jdbc:postgresql://localhost:5432/plage</property>
+        <!-- Update database on startup -->
+        <property name="hibernate.hbm2ddl.auto">update</property>
+
+        <mapping class="com.orsys.groupe4.projetplage.business.Concessionnaire"/>
+        <mapping class="com.orsys.groupe4.projetplage.business.File"/>
+        <mapping class="com.orsys.groupe4.projetplage.business.LienDeParente"/>
+        <mapping class="com.orsys.groupe4.projetplage.business.Locataire"/>
+        <mapping class="com.orsys.groupe4.projetplage.business.Location"/>
+        <mapping class="com.orsys.groupe4.projetplage.business.Parasol"/>
+        <mapping class="com.orsys.groupe4.projetplage.business.Pays"/>
+        <mapping class="com.orsys.groupe4.projetplage.business.Statut"/>
+        <mapping class="com.orsys.groupe4.projetplage.business.Utilisateur"/>
+
+    </session-factory>
+</hibernate-configuration>
