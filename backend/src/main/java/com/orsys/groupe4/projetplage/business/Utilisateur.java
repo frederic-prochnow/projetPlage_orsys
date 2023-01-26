@@ -22,14 +22,14 @@ public abstract class Utilisateur {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long id;
+	protected Long id;
 
-	private String nom;
+	protected String nom;
 
-	private String prenom;
+	protected String prenom;
 
-	private String email;
+	protected String email;
 
-	private String motDePasse;
+	protected String motDePasse;
 
 }
