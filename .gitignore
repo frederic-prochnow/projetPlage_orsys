@@ -1,9 +1,9 @@
-HELP.md
-target/
+backend/HELP.md
+backend/target/
 !.mvn/wrapper/maven-wrapper.jar
 !**/src/main/**/target/
 !**/src/test/**/target/
-log/
+backend/log/
 
 ### STS ###
 .apt_generated
@@ -32,4 +32,4 @@ build/
 
 ### VS Code ###
 .vscode/
-log/enquetes_log
+backend/log/enquetes_log
