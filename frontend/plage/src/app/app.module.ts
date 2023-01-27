@@ -5,18 +5,28 @@ import { AppComponent } from './app.component';
 import { LoginGuard } from './login.guard';
 import { LogoutGuard } from './logout.guard';
 import { AuthentificationComponent } from './authentification/authentification.component';
-import {MatFormFieldModule} from '@angular/material/form-field';
+import { ConnectionTokenInterceptor, tokenInterceptorProvider } from './connection-token.interceptor';
+import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms';
+import { AuthService } from './services/auth.service';
+import { HttpClientModule } from '@angular/common/http';
+import { NavLocataireComponent } from './navbar/nav-locataire/nav-locataire.component';
+import { NavConcessionnaireComponent } from './navbar/nav-concessionnaire/nav-concessionnaire.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    AuthentificationComponent
+    AuthentificationComponent,
+    NavLocataireComponent,
+    NavConcessionnaireComponent,
   ],
   imports: [
     BrowserModule,
-    MatFormFieldModule
+    CommonModule,
+    FormsModule,
+    HttpClientModule
   ],
-  providers: [LoginGuard, LogoutGuard],
+  providers: [AuthService, LoginGuard, LogoutGuard, tokenInterceptorProvider],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

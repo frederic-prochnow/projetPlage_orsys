@@ -4,7 +4,8 @@ import {
   HttpHandler,
   HttpEvent,
   HttpHeaders,
-  HttpInterceptor
+  HttpInterceptor,
+  HTTP_INTERCEPTORS
 } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
@@ -25,3 +26,9 @@ export class ConnectionTokenInterceptor implements HttpInterceptor {
     }
   }
 }
+
+export const tokenInterceptorProvider = {
+  provide: HTTP_INTERCEPTORS,
+  useClass: ConnectionTokenInterceptor,
+  multi: true,
+};

@@ -12,5 +12,4 @@ public interface UtilisateurService {
 	
 	public boolean verifierIdMdpConcessionnaire(Utilisateur utilisateur);
 	public boolean verifierIdMdpConcessionnaire(String email, String mdp);
-
 }
