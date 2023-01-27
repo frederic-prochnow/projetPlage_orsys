@@ -7,4 +7,5 @@ import org.springframework.data.rest.core.annotation.RepositoryRestResource;
 @RepositoryRestResource(exported = true)
 public interface LocataireDao extends JpaRepository<Locataire, Long> {
 
+
 }
