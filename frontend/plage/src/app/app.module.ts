@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
 import { AppComponent } from './app.component';
+
 import { LoginGuard } from './login.guard';
 import { LogoutGuard } from './logout.guard';
 import { AuthentificationComponent } from './authentification/authentification.component';
@@ -12,6 +12,8 @@ import { AuthService } from './services/auth.service';
 import { HttpClientModule } from '@angular/common/http';
 import { NavLocataireComponent } from './navbar/nav-locataire/nav-locataire.component';
 import { NavConcessionnaireComponent } from './navbar/nav-concessionnaire/nav-concessionnaire.component';
+import { CalendrierComponent } from './calendrier/calendrier.component';
+import { ReservationsComponent } from './calendrier/reservations/reservations.component';
 
 @NgModule({
   declarations: [
@@ -19,6 +21,8 @@ import { NavConcessionnaireComponent } from './navbar/nav-concessionnaire/nav-co
     AuthentificationComponent,
     NavLocataireComponent,
     NavConcessionnaireComponent,
+    CalendrierComponent,
+    ReservationsComponent
   ],
   imports: [
     BrowserModule,
