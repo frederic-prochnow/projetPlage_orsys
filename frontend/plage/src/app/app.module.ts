@@ -14,6 +14,7 @@ import { NavLocataireComponent } from './navbar/nav-locataire/nav-locataire.comp
 import { NavConcessionnaireComponent } from './navbar/nav-concessionnaire/nav-concessionnaire.component';
 import { CalendrierComponent } from './calendrier/calendrier.component';
 import { ReservationsComponent } from './calendrier/reservations/reservations.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
   declarations: [
@@ -28,7 +29,8 @@ import { ReservationsComponent } from './calendrier/reservations/reservations.co
     BrowserModule,
     CommonModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    NgbModule
   ],
   providers: [AuthService, LoginGuard, LogoutGuard, tokenInterceptorProvider],
   bootstrap: [AppComponent]
