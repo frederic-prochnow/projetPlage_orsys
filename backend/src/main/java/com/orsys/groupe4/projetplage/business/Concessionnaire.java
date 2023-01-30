@@ -8,12 +8,20 @@ import lombok.Setter;
 import lombok.ToString;
 
 @Entity
-@Getter
-@Setter
-@NoArgsConstructor
-@ToString
 public class Concessionnaire extends Utilisateur {
 
 	private String numeroDeTelephone;
+
+	public Concessionnaire() {
+		super();
+	}
+
+	public String getNumeroDeTelephone() {
+		return numeroDeTelephone;
+	}
+
+	public void setNumeroDeTelephone(String numeroDeTelephone) {
+		this.numeroDeTelephone = numeroDeTelephone;
+	}
 
 }

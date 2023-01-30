@@ -1,0 +1,55 @@
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">Debut</th>
+            <th scope="col">Fin</th>
+            <th scope="col">Montant</th>
+            <th scope="col">Statut</th>
+            <th scope="col"></th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <th scope="row">1</th>
+            <td>01/01/2023</td>
+            <td>02/02/2023</td>
+            <td>150€</td>
+            <td>A Traiter !</td>
+            <td>
+                <div *ngIf="cardDetailsVisible">
+                    <div class="card" id="cardDetails">
+                        <div class="card-header">Details de la réservation</div>
+                        <div class="card-body text-secondary">
+                            <app-reservations-details></app-reservations-details>
+                        </div>
+                    </div>
+                </div>
+                <div *ngIf="!cardDetailsVisible">
+                    <button type="button" class="btn btn-primary" (click)="clickDetail()">
+                        Details
+                    </button>
+                </div>
+            </td>
+            <div *ngIf="cardDetailsVisible">
+                <td>
+                    <button type="button" class="btn btn-primary" (click)="clickDetail()">
+                        X
+                    </button>
+                </td>
+            </div>
+        </tr>
+        <!--<div *ngIf="cardDetailsVisible">
+            <tr>
+                <td colspan="6">
+                    <div class="card" id="cardDetails">
+                        <div class="card-header">Details de la réservation</div>
+                        <div class="card-body text-secondary">
+                            <app-reservations-details></app-reservations-details>
+                        </div>
+                    </div>
+                </td>
+            </tr>
+        </div>-->
+    </tbody>
+</table>

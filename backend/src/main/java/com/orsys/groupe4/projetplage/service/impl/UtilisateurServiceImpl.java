@@ -11,11 +11,15 @@ import lombok.AllArgsConstructor;
 
 @Service
 @Transactional
-@AllArgsConstructor
 public class UtilisateurServiceImpl implements UtilisateurService {
 
-	private final UtilisateurDao dao;
+	private UtilisateurDao dao;
 	
+	public UtilisateurServiceImpl(UtilisateurDao dao) {
+		super();
+		this.dao = dao;
+	}
+
 	@Override
 	public boolean verifierIdMdp(Utilisateur utilisateur) {
 		return dao.verifEmailMDP(utilisateur.getEmail(), utilisateur.getMotDePasse()) == 1;

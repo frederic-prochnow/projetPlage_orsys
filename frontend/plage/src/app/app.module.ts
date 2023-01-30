@@ -15,6 +15,8 @@ import { NavConcessionnaireComponent } from './navbar/nav-concessionnaire/nav-co
 import { CalendrierComponent } from './calendrier/calendrier.component';
 import { DispositionComponent } from './calendrier/disposition/disposition.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { ReservationsATraiterComponent } from './reservations-atraiter/reservations-atraiter.component';
+import { ReservationsDetailsComponent } from './reservations-details/reservations-details.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +25,9 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     NavLocataireComponent,
     NavConcessionnaireComponent,
     CalendrierComponent,
-    DispositionComponent
+    DispositionComponent,
+    ReservationsATraiterComponent,
+    ReservationsDetailsComponent
   ],
   imports: [
     BrowserModule,
