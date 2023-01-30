@@ -13,7 +13,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { NavLocataireComponent } from './navbar/nav-locataire/nav-locataire.component';
 import { NavConcessionnaireComponent } from './navbar/nav-concessionnaire/nav-concessionnaire.component';
 import { CalendrierComponent } from './calendrier/calendrier.component';
-import { ReservationsComponent } from './calendrier/reservations/reservations.component';
+import { DispositionComponent } from './calendrier/disposition/disposition.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { ReservationsATraiterComponent } from './reservations-atraiter/reservations-atraiter.component';
 import { ReservationsDetailsComponent } from './reservations-details/reservations-details.component';
@@ -25,7 +25,7 @@ import { ReservationsDetailsComponent } from './reservations-details/reservation
     NavLocataireComponent,
     NavConcessionnaireComponent,
     CalendrierComponent,
-    ReservationsComponent,
+    DispositionComponent,
     ReservationsATraiterComponent,
     ReservationsDetailsComponent
   ],

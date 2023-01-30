@@ -2,11 +2,11 @@ import { Component, Input, SimpleChanges } from '@angular/core';
 import { Parasol } from 'src/app/models/parasol';
 
 @Component({
-  selector: 'app-reservations',
-  templateUrl: './reservations.component.html',
-  styleUrls: ['./reservations.component.css']
+  selector: 'app-disposition',
+  templateUrl: './disposition.component.html',
+  styleUrls: ['./disposition.component.css']
 })
-export class ReservationsComponent {
+export class DispositionComponent {
   @Input() dataFromParent: any;
 
   tabParasols = [];
