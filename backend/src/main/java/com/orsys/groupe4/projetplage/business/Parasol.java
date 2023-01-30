@@ -28,7 +28,7 @@ public class Parasol {
 	@ManyToOne
 	private File file;
 
-	@OneToMany
+	@ManyToMany
 	private List<Location> locations;
 
 }

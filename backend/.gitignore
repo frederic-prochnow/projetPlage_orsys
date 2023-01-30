@@ -3,7 +3,7 @@ backend/target/
 !.mvn/wrapper/maven-wrapper.jar
 !**/src/main/**/target/
 !**/src/test/**/target/
-backend/log/
+log/
 
 *.class
 
@@ -34,4 +34,4 @@ build/
 
 ### VS Code ###
 .vscode/
-backend/log/enquetes_log
+log/enquetes_log
