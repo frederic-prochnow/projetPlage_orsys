@@ -1,10 +1,19 @@
 package com.orsys.groupe4.projetplage.dao;
 
-import com.orsys.groupe4.projetplage.business.Location;
+import java.util.List;
+
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.rest.core.annotation.RepositoryRestResource;
+
+import com.orsys.groupe4.projetplage.business.Location;
 
 @RepositoryRestResource(exported = true)
 public interface LocationDao extends JpaRepository<Location, Long> {
+	
+	@Query("from Location l where l.statut_id = 1")
+	//		+ "(select s.id from Statut s where s.nom='A_traiter')")
+	public List<Location> reservationATraiter();
+	
 
 }

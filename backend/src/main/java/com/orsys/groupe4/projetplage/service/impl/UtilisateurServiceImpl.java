@@ -14,7 +14,7 @@ import lombok.AllArgsConstructor;
 @AllArgsConstructor
 public class UtilisateurServiceImpl implements UtilisateurService {
 
-	private final UtilisateurDao dao;
+	private UtilisateurDao dao;
 	
 	@Override
 	public boolean verifierIdMdp(Utilisateur utilisateur) {

@@ -5,16 +5,7 @@ import java.util.List;
 
 import javax.persistence.*;
 
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
-import lombok.ToString;
-
 @Entity
-@Getter
-@Setter
-@NoArgsConstructor
-@ToString
 public class Locataire extends Utilisateur {
 
 	private LocalDateTime dateHeureInscription;
@@ -27,4 +18,43 @@ public class Locataire extends Utilisateur {
 	
 	@ManyToOne
 	private Pays pays;
+	
+	
+
+	public Locataire() {
+		super();
+	}
+
+	public LocalDateTime getDateHeureInscription() {
+		return dateHeureInscription;
+	}
+
+	public void setDateHeureInscription(LocalDateTime dateHeureInscription) {
+		this.dateHeureInscription = dateHeureInscription;
+	}
+
+	public List<Location> getLocations() {
+		return locations;
+	}
+
+	public void setLocations(List<Location> locations) {
+		this.locations = locations;
+	}
+
+	public LienDeParente getLienDeParente() {
+		return lienDeParente;
+	}
+
+	public void setLienDeParente(LienDeParente lienDeParente) {
+		this.lienDeParente = lienDeParente;
+	}
+
+	public Pays getPays() {
+		return pays;
+	}
+
+	public void setPays(Pays pays) {
+		this.pays = pays;
+	}
+	
 }
