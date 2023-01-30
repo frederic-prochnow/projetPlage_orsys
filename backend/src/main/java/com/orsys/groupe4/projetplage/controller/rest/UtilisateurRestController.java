@@ -17,7 +17,6 @@ import com.orsys.groupe4.projetplage.service.UtilisateurService;
 import lombok.AllArgsConstructor;
 
 @RestController
-@AllArgsConstructor
 @RequestMapping("/api/")
 @CrossOrigin(origins = "http://localhost:4200")
 public class UtilisateurRestController {
@@ -25,6 +24,14 @@ public class UtilisateurRestController {
 	private UtilisateurService service;
 	private LocataireService serviceLoc;
 	private ConcessionnaireService serviceCons;
+
+	public UtilisateurRestController(UtilisateurService service, LocataireService serviceLoc,
+			ConcessionnaireService serviceCons) {
+		super();
+		this.service = service;
+		this.serviceLoc = serviceLoc;
+		this.serviceCons = serviceCons;
+	}
 
 	@GetMapping("utilisateur/connection/{mail}/{mdp}")
 	public boolean connectionOK(@PathVariable String mail, @PathVariable String mdp) {

@@ -13,11 +13,15 @@ import lombok.AllArgsConstructor;
 
 @Service
 @Transactional
-@AllArgsConstructor
 public class LocationServiceImpl implements LocationService{
 	
 	private LocationDao dao;
 	
+	public LocationServiceImpl(LocationDao dao) {
+		super();
+		this.dao = dao;
+	}
+
 	public List<Location> toutesLocations() {
 		return dao.findAll();
 	}
