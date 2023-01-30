@@ -5,11 +5,14 @@ import java.util.List;
 
 import javax.persistence.*;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 public class Locataire extends Utilisateur {
 
 	private LocalDateTime dateHeureInscription;
 
+	@JsonIgnore
 	@OneToMany(mappedBy = "locataire", fetch = FetchType.EAGER)
 	private List<Location> locations;
 	

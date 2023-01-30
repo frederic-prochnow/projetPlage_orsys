@@ -9,6 +9,8 @@ import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
 import javax.persistence.OneToMany;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -27,6 +29,7 @@ public class Pays {
 
 	private String nom;
 	
+	@JsonIgnore
 	@OneToMany(mappedBy = "pays", fetch = FetchType.EAGER)
 	private List<Locataire> locataires;
 

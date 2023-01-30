@@ -11,6 +11,8 @@ import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
 import javax.persistence.OneToMany;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -32,6 +34,7 @@ public class File {
 
 	private double prixJournalier;
 
+	@JsonIgnore
 	@OneToMany(mappedBy = "file", fetch = FetchType.EAGER)
 	private List<Parasol> parasols;
 
