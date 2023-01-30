@@ -33,3 +33,4 @@ build/
 ### VS Code ###
 .vscode/
 backend/log/enquetes_log
+log/enquetes_log
