@@ -11,9 +11,7 @@ import com.orsys.groupe4.projetplage.business.Location;
 @RepositoryRestResource(exported = true)
 public interface LocationDao extends JpaRepository<Location, Long> {
 	
-	@Query("from Location l where l.statut_id = 1")
-	//		+ "(select s.id from Statut s where s.nom='A_traiter')")
+	@Query("from Location l where l.statut.nom = 'A_traiter'")
 	public List<Location> reservationATraiter();
-	
 
 }
