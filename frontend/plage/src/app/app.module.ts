@@ -14,6 +14,7 @@ import { DispositionComponent } from './calendrier/disposition/disposition.compo
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { ReservationsATraiterComponent } from './reservations-atraiter/reservations-atraiter.component';
 import { ReservationsDetailsComponent } from './reservations-details/reservations-details.component';
+import { AjouterReservationComponent } from './ajouter-reservation/ajouter-reservation.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import { ReservationsDetailsComponent } from './reservations-details/reservation
     CalendrierComponent,
     DispositionComponent,
     ReservationsATraiterComponent,
-    ReservationsDetailsComponent
+    ReservationsDetailsComponent,
+    AjouterReservationComponent
   ],
   imports: [
     BrowserModule,

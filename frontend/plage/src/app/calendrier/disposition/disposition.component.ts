@@ -19,7 +19,8 @@ export class DispositionComponent implements OnChanges{
   tabParasolsATraiter : Parasol[] = [];
   idLoc = sessionStorage.getItem("idLoc");
   idCons = sessionStorage.getItem("idCons");
-  tabParasolsChoisis = [];
+  tabParasolsNonChoisisables : Parasol[] = [];
+  nouvelleLocation : boolean = false;
 
   rows = Array(10).fill(0);
   columns = Array(8).fill(0);
@@ -27,6 +28,7 @@ export class DispositionComponent implements OnChanges{
 
   ngOnChanges(){    
     if(this.dataFromParent != undefined){
+      this.date = this.dataFromParent;
       this.paraService.recupererParasolsValider("2", this.dataFromParent).subscribe({
         next: (response) => {
           if(response){
@@ -69,10 +71,9 @@ export class DispositionComponent implements OnChanges{
     return "libre";
   }
 
-  ajouterAuxChoix(id: any){
-
-    // TODO : push le parasol en question dans le tableau.
-    //this.tabParasolsChoisis.push();
+  commencerLocation(){
+    this.tabParasolsNonChoisisables = this.tabParasolsATraiter.concat(this.tabParasolsValider);
+    this.nouvelleLocation = true;
   }
 
 }
