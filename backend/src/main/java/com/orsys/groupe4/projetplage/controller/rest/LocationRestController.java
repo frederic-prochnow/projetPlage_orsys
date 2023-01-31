@@ -26,8 +26,23 @@ public class LocationRestController {
 		return service.toutesLocations(idCons);
 	}
 	
+	@GetMapping("locations/locataire/{idLoc}")
+	public List<Location> getLocationLocataire(@PathVariable Long idLoc) {
+		return service.toutesLocationsLocataires(idLoc);
+	}
+	
 	@GetMapping("locations/atraiter/{idCons}")
 	public List<Location> getLocationATraiter(@PathVariable Long idCons) {
 		return service.locationATraiter(idCons);
+	}
+	
+	@GetMapping("locations/valider/{idLocation}")
+	public void validerLocation(@PathVariable Long idLocation) {
+		service.validerLocation(idLocation);
+	}
+	
+	@GetMapping("locations/annuler/{idLocation}")
+	public void annulerLocation(@PathVariable Long idLocation) {
+		service.annulerLocation(idLocation);
 	}
 }

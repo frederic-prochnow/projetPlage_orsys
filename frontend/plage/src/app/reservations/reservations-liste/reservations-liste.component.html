@@ -1,3 +1,15 @@
+<div *ngIf="!cardDetailsVisible">
+    <button type="button" class="btn btn-primary" (click)="clickDetail()">
+        Details
+    </button>
+</div>
+<div *ngIf="cardDetailsVisible">
+    <td>
+        <button type="button" class="btn btn-primary" (click)="clickDetail()">
+            X
+        </button>
+    </td>
+</div>
 <table class="table table-striped">
     <thead>
         <tr>
@@ -11,7 +23,7 @@
     </thead>
     <tbody>
         <tr *ngFor="let item of model;">
-            <th scope="row">1</th>
+            <th scope="row">{{item.id}}</th>
             <td>{{item.dateHeureDebut | date:"dd/MM/YYYY" }}</td>
             <td>{{item.dateHeureFin | date:"dd/MM/YYYY"}}</td>
             <td>{{item.montantAReglerEnEuros}}€</td>

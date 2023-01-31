@@ -5,7 +5,7 @@
     </tr>
     <tr>
         <td scope="row">Locataire :</td>
-        <td>{{item.locataire.nom}} {{item.locataire.prenom}}</td>
+        <td>{{item.locataire.prenom}} {{item.locataire.nom}}</td>
     </tr>
     <tr>
         <td scope="row"></td>
@@ -20,29 +20,33 @@
             <table class="table table-striped">
                 <thead>
                     <tr>
-                        <th scope="col">Numéro Emplacement</th>
+                        <th scope="col">Emplacement</th>
+                        <th scope="col">File</th>
                         <th scope="col">Prix Journalier</th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr *ngFor="let parasol of item.parasols;">
                         <th scope="row">{{parasol.numEmplacement}}</th>
+                        <td>{{parasol.file.numero}}</td>
                         <td>{{parasol.file.prixJournalier}}€</td>
                     </tr>
                 </tbody>
             </table>
         </td>
     </tr>
+    <div *ngIf="item.statut.nom == 'ATraiter'">
     <tr>
         <td>
-            <button type="button" class="btn btn-outline-success">
+            <button type="button" class="btn btn-outline-success" (click)="valider(item.id)">
                 Valider
             </button>
         </td>
         <td>
-            <button type="button" class="btn btn-outline-danger">
+            <button type="button" class="btn btn-outline-danger" (click)="annuler(item.id)">
                 Refuser
             </button>
         </td>
     </tr>
+    </div>
 </table>

@@ -1,3 +1,6 @@
 #cardAuth {
-    float:left;
+    float: left;
+    position: fixed;
+    width: auto;
+    height: auto;
 }

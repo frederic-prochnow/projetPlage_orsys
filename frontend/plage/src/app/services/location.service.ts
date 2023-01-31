@@ -12,6 +12,25 @@ export class LocationService {
   constructor(private http: HttpClient) {}
   
   locationATraiter() {
-    return this.http.get<Location[]>(this.link+"atraiter/1");
+    const id = sessionStorage.getItem("idCons");
+    return this.http.get<Location[]>(this.link+"atraiter/"+id);
+  }
+
+  location() {
+    const id = sessionStorage.getItem("idCons");
+    return this.http.get<Location[]>(this.link+"locataire/"+id);
+  }
+
+  locationLocataire() {
+    const id = sessionStorage.getItem("idLoc");
+    return this.http.get<Location[]>(this.link+id);
+  }
+
+  validerLocation(idLocation: number) {
+    this.http.get(this.link+"valider/"+idLocation);
+  }
+
+  annulerLocation(idLocation: number) {
+    this.http.get(this.link+"annuler/"+idLocation);
   }
 }

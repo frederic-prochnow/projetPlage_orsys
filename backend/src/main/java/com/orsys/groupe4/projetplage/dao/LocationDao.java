@@ -15,7 +15,15 @@ public interface LocationDao extends JpaRepository<Location, Long> {
 	@Query(nativeQuery = true, value="Select * from Location l where l.concessionnaire_id=:idCons")
 	public List<Location> reservationByIdCons(@Param("idCons") Long idCons);
 	
+	@Query(nativeQuery = true, value="Select * from Location l where l.locataire_id =:idLoc")
+	public List<Location> reservationByIdLoc(@Param("idLoc")Long idLoc);
+	
 	@Query(nativeQuery = true, value="Select * from Location l where l.statut_id = (select id from statut where nom ='ATraiter') and l.concessionnaire_id=:idCons")
 	public List<Location> reservationATraiterByIdCons(@Param("idCons") Long idCons);
 
+	@Query(nativeQuery = true, value="update Location set statut_id = (select id from statut where nom ='Valider') where id = :idLoc ")
+	public void valider(@Param("idLoc") Long idLocation);
+
+	@Query(nativeQuery = true, value="update Location set statut_id = (select id from statut where nom ='Annuler') where id = :idLoc ")
+	public void annuler(@Param("idLoc") Long idLocation);
 }

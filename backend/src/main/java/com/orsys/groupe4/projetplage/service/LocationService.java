@@ -8,5 +8,12 @@ public interface LocationService {
 
 	List<Location> toutesLocations(Long idCons);
 	
+	List<Location> toutesLocationsLocataires(Long idLoc);
+	
 	List<Location> locationATraiter(Long idCons);
+
+	void validerLocation(Long idLocation);
+
+	void annulerLocation(Long idLocation);
+
 }
