@@ -5,5 +5,6 @@ export class Parasol {
       public id: number,
       public numEmplacement: number,
       public file: File
+
     ) {}
   }

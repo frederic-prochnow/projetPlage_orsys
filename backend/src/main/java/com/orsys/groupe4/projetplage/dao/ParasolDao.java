@@ -15,7 +15,7 @@ import com.orsys.groupe4.projetplage.business.Parasol;
 public interface ParasolDao extends JpaRepository<Parasol, Long>{
     Parasol findByNumEmplacement(byte numEmplacement);
     Parasol findByNumEmplacementAndFile(byte numEmplacement, File file);
-    
+
     @Query(nativeQuery = true, value=
     		"select * "
     		+ "from Parasol p "
@@ -41,4 +41,5 @@ public interface ParasolDao extends JpaRepository<Parasol, Long>{
     		+ "and :dateLoc >= l.date_heure_debut "
     		+ "and :dateLoc <= l.date_heure_fin)")
     List<Parasol> findParasolsByConcessionnaireValider(@Param("idCons") Long idCons,@Param("dateLoc") LocalDateTime date);
+
 }

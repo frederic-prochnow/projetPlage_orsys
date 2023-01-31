@@ -13,16 +13,24 @@
     border-radius: 5px;
 }
 
+.emplacement:hover{
+    filter: drop-shadow(2px 4px 6px black);
+}
+
 .hidden{
     display: none;
 }
 
-.reserve{
+.valider{
     background-color: red;
 }
 
 .libre{
     background-color: whitesmoke;
+}
+
+.atraiter{
+    background-color: blueviolet;
 }
 
 .numero{

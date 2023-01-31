@@ -1,41 +1,71 @@
-import { Component, Input, SimpleChanges } from '@angular/core';
-import { File } from 'src/app/models/file';
+import { LocationService } from './../../services/location.service';
+import { ParasolService } from './../../services/parasol.service';
+import { Component, Input, OnChanges } from '@angular/core';
+
 import { Parasol } from 'src/app/models/parasol';
+import { delay } from 'rxjs';
 
 @Component({
   selector: 'app-disposition',
   templateUrl: './disposition.component.html',
   styleUrls: ['./disposition.component.css']
 })
-export class DispositionComponent {
-  @Input() dataFromParent: any;
+export class DispositionComponent implements OnChanges{
+  @Input() dataFromParent : any;
 
-  tabParasols = [];
-  tabParasolsReserve = [
-    new Parasol(1, 25,new File(2,2,10)),
-  ];
+
+  constructor(private paraService: ParasolService, private locService: LocationService){}
+
+  tabParasolsValider : Parasol[] = [];
+  tabParasolsATraiter : Parasol[] = [];
+
   tabParasolsChoisis = [];
 
   rows = Array(10).fill(0);
   columns = Array(8).fill(0);
   date: any;
-  isSelected: boolean = false;
 
-  affecterClass(st:any) {
+  ngOnChanges(){    
+    if(this.dataFromParent != undefined){
+      this.paraService.recupererParasolsValider("2", this.dataFromParent).subscribe({
+        next: (response) => {
+          if(response){
+            this.tabParasolsValider = response;
+          }else{
+            console.log("Disposition component didn't receive anything from parasols booked");
+          }
+        }
+      });
+      this.paraService.recupererParasolsATraiter("2", this.dataFromParent).subscribe({
+        next: (response) => {
+          if(response){
+            this.tabParasolsATraiter = response;
+          }else{
+            console.log("Disposition component didn't receive anything from parasols booked");
+          }
+        }
+      });
+    }
+  }
 
-    for(let parasol of this.tabParasolsReserve){
-      if(parasol.numEmplacement == st){
-        return "reserve";
+
+  affecterClass(st:string) {
+
+    for(let parasol of this.tabParasolsValider){
+      let emplacement : string = (parasol.file.numero -1)*10 + parasol.numEmplacement; 
+      if(emplacement == st){
+        delay(200);
+        return "valider";
+      }
+    }
+    for(let parasol of this.tabParasolsATraiter){
+      let emplacement : string = (parasol.file.numero -1)*10 + parasol.numEmplacement; 
+      if(emplacement == st){
+        delay(200);
+        return "atraiter";
       }
     }
     return "libre";
-    // TODO : boucler sur le tableau de parasols et 
-    // affecter la classe en fonction de son statut.
-
-    /*return {
-      'reserve': st == 'reserve',
-      'libre': st == 'libre'
-    };*/
   }
 
   ajouterAuxChoix(id: any){

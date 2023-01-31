@@ -21,13 +21,14 @@ public class ParasolServiceImpl implements ParasolService {
         dao.save(p);
     }
 
-	@Override
-	public List<Parasol> recupererParasolATraiterParConsEtDate(Long id, LocalDateTime date) {
-		return dao.findParasolsByConcessionnaireATraiter(id, date);
-	}
-	
-	@Override
-	public List<Parasol> recupererParasolValiderParConsEtDate(Long id, LocalDateTime date) {
-		return dao.findParasolsByConcessionnaireValider(id, date);
-	}
+    @Override
+    public List<Parasol> recupererParasolATraiterParConsEtDate(Long id, LocalDateTime date) {
+        return dao.findParasolsByConcessionnaireATraiter(id, date);
+    }
+
+    @Override
+    public List<Parasol> recupererParasolValiderParConsEtDate(Long id, LocalDateTime date) {
+        return dao.findParasolsByConcessionnaireValider(id, date);
+    }
+
 }
