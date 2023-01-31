@@ -24,7 +24,7 @@ public interface ParasolDao extends JpaRepository<Parasol, Long>{
     		+ "from Location l "
     		+ "join Parasol_locations pl on l.id = pl.locations_id "
     		+ "where l.concessionnaire_id = :idCons "
-    		+ "l.statut_id = (select id from statut where nom ='ATraiter') "
+    		+ "and l.statut_id = (select id from statut where nom ='ATraiter') "
     		+ "and :dateLoc >= l.date_heure_debut "
     		+ "and :dateLoc <= l.date_heure_fin)")
     List<Parasol> findParasolsByConcessionnaireATraiter(@Param("idCons") Long idCons,@Param("dateLoc") LocalDateTime date);
@@ -37,7 +37,7 @@ public interface ParasolDao extends JpaRepository<Parasol, Long>{
     		+ "from Location l "
     		+ "join Parasol_locations pl on l.id = pl.locations_id "
     		+ "where l.concessionnaire_id = :idCons "
-    		+ "l.statut_id = (select id from statut where nom ='Valider') "
+    		+ "and l.statut_id = (select id from statut where nom ='Valider') "
     		+ "and :dateLoc >= l.date_heure_debut "
     		+ "and :dateLoc <= l.date_heure_fin)")
     List<Parasol> findParasolsByConcessionnaireValider(@Param("idCons") Long idCons,@Param("dateLoc") LocalDateTime date);

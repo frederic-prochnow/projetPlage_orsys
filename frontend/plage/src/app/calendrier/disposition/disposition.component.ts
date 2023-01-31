@@ -13,12 +13,12 @@ import { delay } from 'rxjs';
 export class DispositionComponent implements OnChanges{
   @Input() dataFromParent : any;
 
-
   constructor(private paraService: ParasolService, private locService: LocationService){}
 
   tabParasolsValider : Parasol[] = [];
   tabParasolsATraiter : Parasol[] = [];
-
+  idLoc = sessionStorage.getItem("idLoc");
+  idCons = sessionStorage.getItem("idCons");
   tabParasolsChoisis = [];
 
   rows = Array(10).fill(0);
@@ -48,21 +48,22 @@ export class DispositionComponent implements OnChanges{
     }
   }
 
-
+  //Affecte la classe donnant la couleur suivant le type de réservation
   affecterClass(st:string) {
 
     for(let parasol of this.tabParasolsValider){
       let emplacement : string = (parasol.file.numero -1)*10 + parasol.numEmplacement; 
       if(emplacement == st){
-        delay(200);
         return "valider";
       }
     }
     for(let parasol of this.tabParasolsATraiter){
       let emplacement : string = (parasol.file.numero -1)*10 + parasol.numEmplacement; 
-      if(emplacement == st){
-        delay(200);
+      //Si la session appartient à un locataire, un parasol en cours de traitement n'est pasréservable, il sera donc en rouge et non sélectionnable
+      if(emplacement == st && this.idCons){
         return "atraiter";
+      }else if(emplacement == st && this.idLoc){
+        return "valider";
       }
     }
     return "libre";
