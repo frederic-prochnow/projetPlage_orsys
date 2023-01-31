@@ -1,29 +1,33 @@
 <table class="table">
     <tr>
         <td scope="row">Remarques :</td>
-        <td>bla bla bla !</td>
+        <td>{{item.remarques}}</td>
     </tr>
     <tr>
         <td scope="row">Locataire :</td>
-        <td>M. TOTO TITI</td>
+        <td>{{item.locataire.nom}} {{item.locataire.prenom}}</td>
+    </tr>
+    <tr>
+        <td scope="row"></td>
+        <td>({{item.locataire.email}})</td>
     </tr>
     <tr>
         <td scope="row">Nb Parasols réservé :</td>
-        <td>10</td>
+        <td>{{item.parasols.length}}</td>
     </tr>
     <tr>
         <td colspan="2">
             <table class="table table-striped">
                 <thead>
                     <tr>
-                        <th scope="col">#</th>
-                        <th scope="col">Num Emplacement</th>
+                        <th scope="col">Numéro Emplacement</th>
+                        <th scope="col">Prix Journalier</th>
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <th scope="row">1</th>
-                        <td>42</td>
+                    <tr *ngFor="let parasol of item.parasols;">
+                        <th scope="row">{{parasol.numEmplacement}}</th>
+                        <td>{{parasol.file.prixJournalier}}€</td>
                     </tr>
                 </tbody>
             </table>

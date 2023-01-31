@@ -1,4 +1,4 @@
-<div *ngIf="!(type =='Cons') && !(type== 'Loc')">
+<div *ngIf="!(type =='Cons') && !(type== 'Loc') && idCons == null && idLoc == null">
   <div id="cardAuth" class="card border-secondary mb-3">
     <div class="card-header">Connectez-vous !</div>
     <div class="card-body text-secondary">
@@ -21,9 +21,9 @@
     </div>
   </div>
 </div>
-<div *ngIf="type=='Cons'">
+<div *ngIf="type=='Cons' || idCons != null">
   <app-nav-concessionnaire></app-nav-concessionnaire>
 </div>
-<div *ngIf="type=='Loc'">
+<div *ngIf="type=='Loc' || idLoc != null">
   <app-nav-locataire></app-nav-locataire>
 </div>

@@ -11,10 +11,10 @@ export class AuthService {
   constructor(private http: HttpClient) {}
 
   seConnecterLocataire(utilisateur: Utilisateur) {
-    return this.http.get<Boolean>(this.link+"locataire/"+utilisateur.email+"/"+utilisateur.motDePasse);
+    return this.http.get<number>(this.link+"locataire/"+utilisateur.email+"/"+utilisateur.motDePasse);
   }
 
   seConnecterConcessionnaire(utilisateur: Utilisateur) {
-    return this.http.get<Boolean>(this.link+"concessionnaire/"+utilisateur.email+"/"+utilisateur.motDePasse);
+    return this.http.get<number>(this.link+"concessionnaire/"+utilisateur.email+"/"+utilisateur.motDePasse);
   }
 }

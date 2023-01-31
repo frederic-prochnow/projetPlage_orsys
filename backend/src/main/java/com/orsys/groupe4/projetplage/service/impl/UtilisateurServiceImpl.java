@@ -21,32 +21,38 @@ public class UtilisateurServiceImpl implements UtilisateurService {
 	}
 
 	@Override
-	public boolean verifierIdMdp(Utilisateur utilisateur) {
-		return dao.verifEmailMDP(utilisateur.getEmail(), utilisateur.getMotDePasse()) == 1;
+	public int verifierIdMdp(Utilisateur utilisateur) {
+		Integer id = dao.verifEmailMDP(utilisateur.getEmail(), utilisateur.getMotDePasse());
+		return id == null ? -1 : id;
 	}
 
 	@Override
-	public boolean verifierIdMdpLocataire(Utilisateur utilisateur) {
-		return dao.verifEmailMDPLocataire(utilisateur.getEmail(), utilisateur.getMotDePasse()) == 1;
+	public int verifierIdMdpLocataire(Utilisateur utilisateur) {
+		Integer id = dao.verifEmailMDPLocataire(utilisateur.getEmail(), utilisateur.getMotDePasse());
+		return id == null ? -1 : id;
 	}
 
 	@Override
-	public boolean verifierIdMdpConcessionnaire(Utilisateur utilisateur) {
-		return dao.verifEmailMDPConcessionnaire(utilisateur.getEmail(), utilisateur.getMotDePasse()) == 1;
+	public int verifierIdMdpConcessionnaire(Utilisateur utilisateur) {
+		Integer id = dao.verifEmailMDPConcessionnaire(utilisateur.getEmail(), utilisateur.getMotDePasse());
+		return id == null ? -1 : id;
 	}
 
 	@Override
-	public boolean verifierIdMdp(String email, String mdp) {
-		return dao.verifEmailMDP(email, mdp) == 1;
+	public int verifierIdMdp(String email, String mdp) {
+		Integer id = dao.verifEmailMDP(email, mdp);
+		return id == null ? -1 : id;
 	}
 
 	@Override
-	public boolean verifierIdMdpLocataire(String email, String mdp) {
-		return dao.verifEmailMDPLocataire(email, mdp) == 1;
+	public int verifierIdMdpLocataire(String email, String mdp) {
+		Integer id =  dao.verifEmailMDPLocataire(email, mdp);
+		return id == null ? -1 : id;
 	}
 
 	@Override
-	public boolean verifierIdMdpConcessionnaire(String email, String mdp) {
-		return dao.verifEmailMDPConcessionnaire(email, mdp) == 1;
+	public int verifierIdMdpConcessionnaire(String email, String mdp) {
+		Integer id = dao.verifEmailMDPConcessionnaire(email, mdp);
+		return id == null ? -1 : id;
 	}
 }

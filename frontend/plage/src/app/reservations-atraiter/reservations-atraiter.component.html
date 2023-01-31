@@ -10,18 +10,18 @@
         </tr>
     </thead>
     <tbody>
-        <tr>
+        <tr *ngFor="let item of model;">
             <th scope="row">1</th>
-            <td>01/01/2023</td>
-            <td>02/02/2023</td>
-            <td>150€</td>
-            <td>A Traiter !</td>
+            <td>{{item.dateHeureDebut | date:"dd/MM/YYYY" }}</td>
+            <td>{{item.dateHeureFin | date:"dd/MM/YYYY"}}</td>
+            <td>{{item.montantAReglerEnEuros}}€</td>
+            <td>{{item.statut.nom == "ATraiter" ? "A traiter": item.statut.nom}}</td>
             <td>
                 <div *ngIf="cardDetailsVisible">
                     <div class="card" id="cardDetails">
                         <div class="card-header">Details de la réservation</div>
                         <div class="card-body text-secondary">
-                            <app-reservations-details></app-reservations-details>
+                            <app-reservations-details [item]="item"></app-reservations-details>
                         </div>
                     </div>
                 </div>
@@ -39,17 +39,5 @@
                 </td>
             </div>
         </tr>
-        <!--<div *ngIf="cardDetailsVisible">
-            <tr>
-                <td colspan="6">
-                    <div class="card" id="cardDetails">
-                        <div class="card-header">Details de la réservation</div>
-                        <div class="card-body text-secondary">
-                            <app-reservations-details></app-reservations-details>
-                        </div>
-                    </div>
-                </td>
-            </tr>
-        </div>-->
     </tbody>
 </table>

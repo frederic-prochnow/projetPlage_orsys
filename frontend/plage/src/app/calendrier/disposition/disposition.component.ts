@@ -1,4 +1,5 @@
 import { Component, Input, SimpleChanges } from '@angular/core';
+import { File } from 'src/app/models/file';
 import { Parasol } from 'src/app/models/parasol';
 
 @Component({
@@ -11,7 +12,7 @@ export class DispositionComponent {
 
   tabParasols = [];
   tabParasolsReserve = [
-    new Parasol(1, 25),
+    new Parasol(1, 25,new File(2,2,10)),
   ];
   tabParasolsChoisis = [];
 

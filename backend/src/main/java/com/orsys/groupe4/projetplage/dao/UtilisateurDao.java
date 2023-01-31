@@ -14,21 +14,21 @@ public interface UtilisateurDao extends JpaRepository<Utilisateur, Long> {
 
 	Utilisateur findByEmail(String email);
 	
-	@Query(value = "SELECT COUNT(*) "
+	@Query(value = "SELECT u.id "
 			+ "FROM Utilisateur u "
 			+ "WHERE u.email=:email AND u.motDePasse=:mdp")
-	int verifEmailMDP(@Param("email") String email,@Param("mdp") String mdp);
+	Integer verifEmailMDP(@Param("email") String email,@Param("mdp") String mdp);
 	
-	@Query(value = "SELECT count(*) "
+	@Query(value = "SELECT u.id "
 			+ "FROM Utilisateur u "
 			+ "WHERE u.email=:email AND u.motDePasse=:mdp "
 			+ "AND u.id IN (select l.id from Locataire l)")
-	int verifEmailMDPLocataire(@Param("email") String email,@Param("mdp") String mdp);
+	Integer verifEmailMDPLocataire(@Param("email") String email,@Param("mdp") String mdp);
 	
-	@Query(value = "SELECT COUNT(*) "
+	@Query(value = "SELECT u.id "
 			+ "FROM Utilisateur u "
 			+ "WHERE u.email=:email AND u.motDePasse=:mdp "
 			+ "AND u.id IN (select c.id from Concessionnaire c)")
-	int verifEmailMDPConcessionnaire(@Param("email") String email,@Param("mdp") String mdp);
+	Integer verifEmailMDPConcessionnaire(@Param("email") String email,@Param("mdp") String mdp);
 
 }

@@ -1,6 +1,9 @@
+import { File } from "./file";
+
 export class Parasol {
     constructor(
-      public id: any,
-      public numEmplacement: any,
+      public id: number,
+      public numEmplacement: number,
+      public file: File
     ) {}
   }
