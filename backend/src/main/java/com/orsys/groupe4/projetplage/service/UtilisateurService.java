@@ -4,12 +4,12 @@ import com.orsys.groupe4.projetplage.business.Utilisateur;
 
 public interface UtilisateurService {
 
-	public boolean verifierIdMdp(Utilisateur utilisateur);
-	public boolean verifierIdMdp(String email, String mdp);
+	public int verifierIdMdp(Utilisateur utilisateur);
+	public int verifierIdMdp(String email, String mdp);
 	
-	public boolean verifierIdMdpLocataire(Utilisateur utilisateur);
-	public boolean verifierIdMdpLocataire(String email, String mdp);
+	public int verifierIdMdpLocataire(Utilisateur utilisateur);
+	public int verifierIdMdpLocataire(String email, String mdp);
 	
-	public boolean verifierIdMdpConcessionnaire(Utilisateur utilisateur);
-	public boolean verifierIdMdpConcessionnaire(String email, String mdp);
+	public int verifierIdMdpConcessionnaire(Utilisateur utilisateur);
+	public int verifierIdMdpConcessionnaire(String email, String mdp);
 }

@@ -6,7 +6,7 @@ import com.orsys.groupe4.projetplage.business.Location;
 
 public interface LocationService {
 
-	List<Location> toutesLocations();
+	List<Location> toutesLocations(Long idCons);
 	
-	List<Location> locationATraiter();
+	List<Location> locationATraiter(Long idCons);
 }

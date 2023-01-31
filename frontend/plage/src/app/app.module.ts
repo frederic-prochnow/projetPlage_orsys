@@ -2,10 +2,7 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { AppComponent } from './app.component';
 
-import { LoginGuard } from './login.guard';
-import { LogoutGuard } from './logout.guard';
 import { AuthentificationComponent } from './authentification/authentification.component';
-import { ConnectionTokenInterceptor, tokenInterceptorProvider } from './connection-token.interceptor';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { AuthService } from './services/auth.service';
@@ -36,7 +33,7 @@ import { ReservationsDetailsComponent } from './reservations-details/reservation
     HttpClientModule,
     NgbModule
   ],
-  providers: [AuthService, LoginGuard, LogoutGuard, tokenInterceptorProvider],
+  providers: [AuthService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

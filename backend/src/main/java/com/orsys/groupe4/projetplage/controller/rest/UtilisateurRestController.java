@@ -34,20 +34,17 @@ public class UtilisateurRestController {
 	}
 
 	@GetMapping("utilisateur/connection/{mail}/{mdp}")
-	public boolean connectionOK(@PathVariable String mail, @PathVariable String mdp) {
-		System.out.println(mail + "-" + mdp);
+	public int connectionOK(@PathVariable String mail, @PathVariable String mdp) {
 		return service.verifierIdMdp(mail, mdp);
 	}
 
 	@GetMapping("utilisateur/connection/locataire/{mail}/{mdp}")
-	public boolean connectionLocataireOK(@PathVariable String mail, @PathVariable String mdp) {
-		System.out.println(mail + "-" + mdp);
+	public int connectionLocataireOK(@PathVariable String mail, @PathVariable String mdp) {
 		return service.verifierIdMdpLocataire(mail, mdp);
 	}
 
 	@GetMapping("utilisateur/connection/concessionnaire/{mail}/{mdp}")
-	public boolean connectionConcessionnaireOK(@PathVariable String mail, @PathVariable String mdp) {
-		System.out.println(mail + "-" + mdp);
+	public int connectionConcessionnaireOK(@PathVariable String mail, @PathVariable String mdp) {
 		return service.verifierIdMdpConcessionnaire(mail, mdp);
 	}
 
