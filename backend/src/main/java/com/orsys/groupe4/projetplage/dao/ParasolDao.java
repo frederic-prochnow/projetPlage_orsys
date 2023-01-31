@@ -16,29 +16,30 @@ public interface ParasolDao extends JpaRepository<Parasol, Long>{
     Parasol findByNumEmplacement(byte numEmplacement);
     Parasol findByNumEmplacementAndFile(byte numEmplacement, File file);
 
-	@Query(nativeQuery = true, value=
-			"select * "
-					+ "from Parasol p "
-					+ "where p.id in "
-					+ "(select pl.parasols_id "
-					+ "from Location l "
-					+ "join Parasol_locations pl on l.id = pl.locations_id "
-					+ "where l.concessionnaire_id = :idCons "
-					+ "and l.statut_id = 1 "
-					+ "and :dateLoc >= l.date_heure_debut "
-					+ "and :dateLoc <= l.date_heure_fin)")
-	List<Parasol> findParasolsByConcessionnaireATraiter(@Param("idCons") Long idCons,@Param("dateLoc") LocalDateTime date);
+    @Query(nativeQuery = true, value=
+    		"select * "
+    		+ "from Parasol p "
+    		+ "where p.id in "
+    		+ "(select pl.parasols_id "
+    		+ "from Location l "
+    		+ "join Parasol_locations pl on l.id = pl.locations_id "
+    		+ "where l.concessionnaire_id = :idCons "
+    		+ "l.statut_id = (select id from statut where nom ='ATraiter') "
+    		+ "and :dateLoc >= l.date_heure_debut "
+    		+ "and :dateLoc <= l.date_heure_fin)")
+    List<Parasol> findParasolsByConcessionnaireATraiter(@Param("idCons") Long idCons,@Param("dateLoc") LocalDateTime date);
+    
+    @Query(nativeQuery = true, value=
+    		"select * "
+    		+ "from Parasol p "
+    		+ "where p.id in "
+    		+ "(select pl.parasols_id "
+    		+ "from Location l "
+    		+ "join Parasol_locations pl on l.id = pl.locations_id "
+    		+ "where l.concessionnaire_id = :idCons "
+    		+ "l.statut_id = (select id from statut where nom ='Valider') "
+    		+ "and :dateLoc >= l.date_heure_debut "
+    		+ "and :dateLoc <= l.date_heure_fin)")
+    List<Parasol> findParasolsByConcessionnaireValider(@Param("idCons") Long idCons,@Param("dateLoc") LocalDateTime date);
 
-	@Query(nativeQuery = true, value=
-			"select * "
-					+ "from Parasol p "
-					+ "where p.id in "
-					+ "(select pl.parasols_id "
-					+ "from Location l "
-					+ "join Parasol_locations pl on l.id = pl.locations_id "
-					+ "where l.concessionnaire_id = :idCons "
-					+ "and l.statut_id = 2 "
-					+ "and :dateLoc >= l.date_heure_debut "
-					+ "and :dateLoc <= l.date_heure_fin)")
-	List<Parasol> findParasolsByConcessionnaireValider(@Param("idCons") Long idCons,@Param("dateLoc") LocalDateTime date);
 }

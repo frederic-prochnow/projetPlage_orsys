@@ -7,4 +7,9 @@ import { Component } from '@angular/core';
 })
 export class NavLocataireComponent {
 
+  deconnection() {
+    sessionStorage.removeItem("idLoc");
+    sessionStorage.setItem("message","Deconnexion locataire réussi !");
+    window.location.reload();
+  }
 }

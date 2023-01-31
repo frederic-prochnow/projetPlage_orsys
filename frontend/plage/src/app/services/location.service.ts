@@ -12,6 +12,6 @@ export class LocationService {
   constructor(private http: HttpClient) {}
   
   locationATraiter() {
-    return this.http.get<Location[]>(this.link+"atraiter/");
+    return this.http.get<Location[]>(this.link+"atraiter/1");
   }
 }

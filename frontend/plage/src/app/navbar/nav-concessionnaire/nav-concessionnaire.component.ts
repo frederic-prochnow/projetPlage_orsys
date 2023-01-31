@@ -7,4 +7,9 @@ import { Component } from '@angular/core';
 })
 export class NavConcessionnaireComponent {
 
+  deconnection() {
+    sessionStorage.removeItem("idCons");
+    sessionStorage.setItem("message","Deconnexion concessionnaire réussi !");
+    window.location.reload();
+  }
 }

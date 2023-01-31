@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
+import { Location } from '../models/location';
 
 @Component({
   selector: 'app-reservations-details',
@@ -7,4 +8,6 @@ import { Component } from '@angular/core';
 })
 export class ReservationsDetailsComponent {
 
+  @Input()
+  item!: Location;
 }

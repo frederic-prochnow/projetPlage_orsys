@@ -1,6 +1,7 @@
 import { LocationService } from './../../services/location.service';
 import { ParasolService } from './../../services/parasol.service';
 import { Component, Input, OnChanges } from '@angular/core';
+
 import { Parasol } from 'src/app/models/parasol';
 import { delay } from 'rxjs';
 
@@ -12,10 +13,12 @@ import { delay } from 'rxjs';
 export class DispositionComponent implements OnChanges{
   @Input() dataFromParent : any;
 
+
   constructor(private paraService: ParasolService, private locService: LocationService){}
 
   tabParasolsValider : Parasol[] = [];
   tabParasolsATraiter : Parasol[] = [];
+
   tabParasolsChoisis = [];
 
   rows = Array(10).fill(0);

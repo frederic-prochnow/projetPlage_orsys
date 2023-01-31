@@ -30,4 +30,5 @@ public class ParasolServiceImpl implements ParasolService {
     public List<Parasol> recupererParasolValiderParConsEtDate(Long id, LocalDateTime date) {
         return dao.findParasolsByConcessionnaireValider(id, date);
     }
+
 }

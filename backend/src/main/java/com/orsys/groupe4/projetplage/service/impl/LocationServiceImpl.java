@@ -22,13 +22,13 @@ public class LocationServiceImpl implements LocationService{
 		this.dao = dao;
 	}
 
-	public List<Location> toutesLocations() {
-		return dao.findAll();
+	public List<Location> toutesLocations(Long idCons) {
+		return dao.reservationByIdCons(idCons);
 	}
 
 	@Override
-	public List<Location> locationATraiter() {
-		return dao.reservationATraiter();
+	public List<Location> locationATraiter(Long idCons) {
+		return dao.reservationATraiterByIdCons(idCons);
 	}
 
 }
