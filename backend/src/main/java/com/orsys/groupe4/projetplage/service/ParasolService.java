@@ -9,5 +9,7 @@ public interface ParasolService {
 
     void creerParasol(Parasol p);
 
-    List<Parasol> recupererParasolParConsEtDate(Long id, LocalDateTime date);
+    List<Parasol> recupererParasolATraiterParConsEtDate(Long id, LocalDateTime date);
+
+    List<Parasol> recupererParasolValiderParConsEtDate(Long id, LocalDateTime date);
 }

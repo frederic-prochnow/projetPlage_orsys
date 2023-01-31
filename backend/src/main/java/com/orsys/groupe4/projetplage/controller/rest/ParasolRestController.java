@@ -33,9 +33,14 @@ public class ParasolRestController {
         servicePara.creerParasol(p);
         return true;
     }
-    
-    @GetMapping("parasol/liste/{idCons}/{dateLoc}")
-    public List<Parasol> recupererParasols(@PathVariable Long idCons, @PathVariable @DateTimeFormat(pattern="yyyy-MM-dd") LocalDate dateLoc) {
-        return servicePara.recupererParasolParConsEtDate(idCons, LocalDateTime.of(dateLoc.getYear(),dateLoc.getMonth(),dateLoc.getDayOfMonth(),0,0));
+
+    @GetMapping("parasol/liste/aTraiter/{idCons}/{dateLoc}")
+    public List<Parasol> recupererParasolsATraiter(@PathVariable Long idCons, @PathVariable @DateTimeFormat(pattern="yyyy-MM-dd") LocalDate dateLoc) {
+        return servicePara.recupererParasolATraiterParConsEtDate(idCons, LocalDateTime.of(dateLoc.getYear(),dateLoc.getMonth(),dateLoc.getDayOfMonth(),0,0));
+    }
+
+    @GetMapping("parasol/liste/valider/{idCons}/{dateLoc}")
+    public List<Parasol> recupererParasolsValider(@PathVariable Long idCons, @PathVariable @DateTimeFormat(pattern="yyyy-MM-dd") LocalDate dateLoc) {
+        return servicePara.recupererParasolValiderParConsEtDate(idCons, LocalDateTime.of(dateLoc.getYear(),dateLoc.getMonth(),dateLoc.getDayOfMonth(),0,0));
     }
 }

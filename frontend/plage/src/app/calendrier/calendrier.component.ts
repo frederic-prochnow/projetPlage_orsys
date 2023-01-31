@@ -9,11 +9,12 @@ import { NgbDateStruct, NgbCalendar } from '@ng-bootstrap/ng-bootstrap';
 export class CalendrierComponent {
   title = 'ng-bootstrap-datepicker';
   model!: NgbDateStruct;
-  dataToSend: any;
-  date: string ="";
+  dataToSend: string | undefined;
+  date: string | undefined;
 
   submitToChild(){
-    this.date += this.model.day + "-" + this.model.month + "-" + this.model.year; 
+    this.date = "";
+    this.date += this.model.year + "-" +  (this.model.month<10?"0"+this.model.month:this.model.month) + "-" +(this.model.day<10?"0"+this.model.day:this.model.day); 
     this.dataToSend = this.date;
   }
   
