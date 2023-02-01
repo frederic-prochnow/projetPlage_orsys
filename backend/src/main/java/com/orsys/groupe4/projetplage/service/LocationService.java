@@ -3,6 +3,7 @@ package com.orsys.groupe4.projetplage.service;
 import java.util.List;
 
 import com.orsys.groupe4.projetplage.business.Location;
+import com.orsys.groupe4.projetplage.business.Parasol;
 
 public interface LocationService {
 
@@ -15,5 +16,8 @@ public interface LocationService {
 	boolean validerLocation(Long idLocation);
 
 	boolean annulerLocation(Long idLocation);
+
+	boolean creerLocation(String date, int idCons, int idLoc, List<Parasol> parasols, String remarques, int montant);
+
 
 }

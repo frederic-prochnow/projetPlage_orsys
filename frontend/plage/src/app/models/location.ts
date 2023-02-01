@@ -5,7 +5,6 @@ import { Utilisateur } from "./utilisateur";
 
 export class Location {
     constructor(
-      public id: number,
       public dateHeureDebut: Date,
       public dateHeureFin: Date,
       public montantAReglerEnEuros: number,
@@ -13,6 +12,7 @@ export class Location {
       public parasols: Parasol[],
       public locataire: Utilisateur,
       public statut: Statut,
-      public concessionnaire: Concessionnaire
+      public concessionnaire: Concessionnaire,
+      public id?: number
     ) {}
   }

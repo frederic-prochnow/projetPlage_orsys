@@ -19,6 +19,8 @@ import { ReservationsTotalComponent } from './reservations/reservations-total/re
 import { AccueilLocataireComponent } from './navigation/accueil-locataire/accueil-locataire.component';
 import { AccueilConcessionnaireComponent } from './navigation/accueil-concessionnaire/accueil-concessionnaire.component';
 import { ReservationsLocataireComponent } from './reservations/reservations-locataire/reservations-locataire.component';
+import { AjouterReservationComponent } from './ajouter-reservation/ajouter-reservation.component';
+
 
 @NgModule({
   declarations: [
@@ -35,6 +37,7 @@ import { ReservationsLocataireComponent } from './reservations/reservations-loca
     AccueilLocataireComponent,
     AccueilConcessionnaireComponent,
     ReservationsLocataireComponent
+    AjouterReservationComponent
   ],
   imports: [
     BrowserModule,

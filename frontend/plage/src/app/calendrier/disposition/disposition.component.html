@@ -1,15 +1,29 @@
 <div class="container">
     <div class="row justify-content-center">
-        <div *ngIf="dataFromParent" class="col-9">
-            <div class="row justify-content-center mt-5">
+        <div *ngIf="dataFromParent && idCons" class="col-9">
+            <div class="cons row justify-content-center mt-5">
                 <div class="colonne col-auto" *ngFor="let row of rows; let i = index">
-                    <div (click)="ajouterAuxChoix(numEmplacement.innerHTML)"
-                         [ngClass]="affecterClass(numEmplacement.innerHTML)"
+                    <div [ngClass]="affecterClass(numEmplacement.innerHTML)"
                          class="emplacement" *ngFor="let col of columns; let j = index">
                         <div #id class="hidden">{{ j }}{{ i }}</div>
                         <div #numEmplacement class="numero">{{j*10 + i+1}}</div>
                     </div>
                 </div>
+            </div>
+        </div>
+        <div *ngIf="dataFromParent && idLoc">
+            <button class="btn btn-lg btn-outline-primary" (click)="commencerLocation()">Commencer une nouvelle réservation</button>
+            <div class="loc row justify-content-center mt-5">
+                <div class="colonne col-auto" *ngFor="let row of rows; let i = index">
+                    <div [ngClass]="affecterClass(numEmplacement.innerHTML)"
+                         class="emplacement" *ngFor="let col of columns; let j = index">
+                        <div #id class="hidden">{{ j }}{{ i }}</div>
+                        <div #numEmplacement class="numero">{{j*10 + i+1}}</div>
+                    </div>
+                </div>
+            </div>
+            <div *ngIf="nouvelleLocation">
+                <app-ajouter-reservation [tabParasolsNonChoisisables]="tabParasolsNonChoisisables" [dateLocation]="date"></app-ajouter-reservation>
             </div>
         </div>
     </div>

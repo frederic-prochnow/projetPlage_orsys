@@ -2,14 +2,13 @@ package com.orsys.groupe4.projetplage.service.impl;
 
 import java.util.List;
 
+import com.orsys.groupe4.projetplage.business.Parasol;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.orsys.groupe4.projetplage.business.Location;
 import com.orsys.groupe4.projetplage.dao.LocationDao;
 import com.orsys.groupe4.projetplage.service.LocationService;
-
-import lombok.AllArgsConstructor;
 
 @Service
 @Transactional
@@ -43,6 +42,18 @@ public class LocationServiceImpl implements LocationService{
 	@Override
 	public boolean annulerLocation(Long idLocation) {
 		return dao.annuler(idLocation) == 1;
+  }
+
+  @Override
+	public boolean creerLocation(String date, int idCons, int idLoc, List<Parasol> parasols, String remarques, int montant) {
+		int id = dao.recupererId() + 1;
+		boolean ok = dao.ajouterReservation(id, date, idCons, idLoc, remarques, montant)==1;
+		for(Parasol p: parasols){
+			if (dao.ajouterParasolsLocation(p.getId(), id)!=1){
+				ok = false;
+			}
+		}
+		return ok;
 	}
 
 }

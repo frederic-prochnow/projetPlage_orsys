@@ -2,11 +2,9 @@ package com.orsys.groupe4.projetplage.controller.rest;
 
 import java.util.List;
 
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import com.orsys.groupe4.projetplage.business.Locataire;
+import com.orsys.groupe4.projetplage.business.Parasol;
+import org.springframework.web.bind.annotation.*;
 
 import com.orsys.groupe4.projetplage.business.Location;
 import com.orsys.groupe4.projetplage.service.LocationService;
@@ -44,5 +42,10 @@ public class LocationRestController {
 	@GetMapping("locations/annuler/{idLocation}")
 	public boolean annulerLocation(@PathVariable Long idLocation) {
 		return service.annulerLocation(idLocation);
+
+	@PostMapping("location/creation/")
+	public boolean creerLocation(@RequestParam String date, @RequestParam int idCons, @RequestParam int idLoc, @RequestParam List<Parasol> parasols, @RequestParam String remarques, @RequestParam int montant) {
+		return service.creerLocation(date, idCons, idLoc, parasols, remarques, montant);
+
 	}
 }
