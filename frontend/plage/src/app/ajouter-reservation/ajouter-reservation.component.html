@@ -27,13 +27,17 @@
         <div class="col-8">
             <form class="form-group" (ngSubmit)="submitForm()">
                 <label for="date">Date sélectionnée</label>
-                <input required class="form-control" name="date" type="text" [(ngModel)]="dateLocation" value="{{ dateLocation }}">
+                <input readonly required class="form-control" name="date" type="text" [(ngModel)]="dateLocation" value="{{ dateLocation }}">
                 <label for="parasols">Parasols souhaités</label>
-                <select required name="parasols" multiple [(ngModel)]="parasolsSelectionnes">
+                <select class="form-control" required name="parasols" multiple [(ngModel)]="parasolsSelectionnes">
                     <option *ngFor="let number of parasolsDisponibles" value="{{number}}">
                         Parasol {{number}}
                     </option>
                 </select>
+                <label for="remarque">Remarques</label>
+                <input name="remarque" [(ngModel)]="remarque" class="form-control" type="textarea"><br>
+                <label for="montant">Montant à régler en €</label>
+                <input readonly name="montant" [(ngModel)]="montantAReglerEnEuros" class="form-control" type="text"><br>
                 <button type="submit" class="btn btn-outline-dark">Réserver</button>
             </form>
         </div>
