@@ -35,11 +35,11 @@ export class LocationService {
     return this.http.get<boolean>(this.link+"locations/annuler/"+idLocation);
   }
 
-  nouvelleLocation(date:string, idCons:number, idLoc:string, parasols:Parasol[], remarques: string, montant:number){
-    return this.http.post(this.link+"location/creation/?date="+date+"&idCons="+idCons+"&idLoc="+idLoc+"&parasols&remarques="+remarques+"&montant="+montant, {})
+  nouvelleLocation(date:string, idCons:number, idLoc:string, remarques: string, montant:number){
+    return this.http.post<number>(this.link+"location/creation/?date="+date+"&idCons="+idCons+"&idLoc="+idLoc+"&remarques="+remarques+"&montant="+montant, {})
   }
 
-  /*nouvelleLocation(date:string, idCons:number, idLoc:string, parasols:Parasol[], remarques: string, montant:number){
-    return this.http.get(this.link+"location/creation/"+date+"/"+idCons+"/"+idLoc+"/"+parasols+"/"+remarques+"/"+montant)
-  }*/
+  ajoutParasolsLocation(idLocation: number, idParasol:number){
+    return this.http.post<number>(this.link+"location/creation/parasols/?idLocation="+idLocation+"&idParasol="+idParasol, {});
+  }
 }

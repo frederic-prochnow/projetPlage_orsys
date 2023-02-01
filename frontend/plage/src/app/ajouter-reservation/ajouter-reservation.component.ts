@@ -71,63 +71,30 @@ export class AjouterReservationComponent {
       this.parasolsAEnvoyer.push(new Parasol(p, p, this.listFiles[numeroFile]));
     }
     
-    this.locServ.nouvelleLocation(this.dateLocation, 2, idLocataire, this.parasolsAEnvoyer, this.remarque, this.montantAReglerEnEuros ).subscribe({
+    this.locServ.nouvelleLocation(this.dateLocation, 1, idLocataire, this.remarque, this.montantAReglerEnEuros ).subscribe({
       next: (response) => {
-        if(response){
-          alert("Votre réservation a bien été prise en compte");
-        }else{
+        if(response==-1){
           alert("Il y a eu un problème lors de votre réservation, réessayez");
+        }else{
+          const idLocation = response;
+          let ok = true;
+          for(let p of this.parasolsAEnvoyer){
+            this.locServ.ajoutParasolsLocation(idLocation,p.id).subscribe({
+              next: (response) => {
+                if(!response){
+                  ok = false;
+                }
+              }
+            });
+          }
+          if(!ok){
+            alert("Il y a eu un problème de l'enregistrement des parasols, réessayez");
+          }else {
+            alert("Location rajouter avec succès");
+            window.location.reload();
+          }
         }
       }
     });
-
-    console.log(this.dateLocation, 2, idLocataire, this.parasolsAEnvoyer, this.remarque, this.montantAReglerEnEuros);
-    
-
-    //const nouvelleLocation : Location = new Location(this.dateLocation | Date, this.dateLocation | Date +1);
   }
-
-
-
-
-  //Ouvre le panneau réservation au clic sur un parasol
-  /*@ViewChild('content')
-  content!: ElementRef;
-  ngAfterViewInit() {
-    this.open(this.content.nativeElement);
-    console.log(this.content.nativeElement);
-  }*/
-
-  /*@Output() valueChanged = new EventEmitter<string>();
-
-  changeValue() {
-    this.valueChanged.emit('Nouvelle valeur');
-  }*/
-
-  /*closeResult = '';
-
-	constructor(private offcanvasService: NgbOffcanvas) {}
-
-	open(content: any) {
-    console.log(content);
-    
-		this.offcanvasService.open(content, { ariaLabelledBy: 'offcanvas-basic-title' }).result.then(
-			(result) => {
-				this.closeResult = `Closed with: ${result}`;
-			},
-			(reason) => {
-				this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
-			},
-		);
-	}
-
-	private getDismissReason(reason: any): string {
-		if (reason === OffcanvasDismissReasons.ESC) {
-			return 'by pressing ESC';
-		} else if (reason === OffcanvasDismissReasons.BACKDROP_CLICK) {
-			return 'by clicking on the backdrop';
-		} else {
-			return `with: ${reason}`;
-		}
-	}*/
 }

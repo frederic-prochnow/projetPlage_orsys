@@ -41,6 +41,6 @@ public interface LocationDao extends JpaRepository<Location, Long> {
 	@Modifying
 	@Query(nativeQuery = true, value= "insert into parasol_locations (parasols_id,locations_id)"
 									+ "values (:idPara, :idLoca);")
-	public int ajouterParasolsLocation(@Param("idPara") Long idPara, @Param("idLoca") int idLoca);
+	public int ajouterParasolsLocation(@Param("idPara") int idPara, @Param("idLoca") int idLoca);
 
 }

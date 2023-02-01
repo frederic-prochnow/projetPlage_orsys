@@ -29,7 +29,7 @@ export class DispositionComponent implements OnChanges{
   ngOnChanges(){    
     if(this.dataFromParent != undefined){
       this.date = this.dataFromParent;
-      this.paraService.recupererParasolsValider("2", this.dataFromParent).subscribe({
+      this.paraService.recupererParasolsValider("1", this.dataFromParent).subscribe({
         next: (response) => {
           if(response){
             this.tabParasolsValider = response;
@@ -38,7 +38,7 @@ export class DispositionComponent implements OnChanges{
           }
         }
       });
-      this.paraService.recupererParasolsATraiter("2", this.dataFromParent).subscribe({
+      this.paraService.recupererParasolsATraiter("1", this.dataFromParent).subscribe({
         next: (response) => {
           if(response){
             this.tabParasolsATraiter = response;
@@ -48,14 +48,16 @@ export class DispositionComponent implements OnChanges{
         }
       });
     }
+    console.log(this.tabParasolsValider,this.tabParasolsATraiter);
   }
 
   //Affecte la classe donnant la couleur suivant le type de réservation
   affecterClass(st:string) {
-
+    console.log("ok1");
     for(let parasol of this.tabParasolsValider){
       let emplacement : string = (parasol.file.numero -1)*10 + parasol.numEmplacement; 
       if(emplacement == st){
+        console.log("ok4");
         return "valider";
       }
     }
@@ -63,8 +65,10 @@ export class DispositionComponent implements OnChanges{
       let emplacement : string = (parasol.file.numero -1)*10 + parasol.numEmplacement; 
       //Si la session appartient à un locataire, un parasol en cours de traitement n'est pasréservable, il sera donc en rouge et non sélectionnable
       if(emplacement == st && this.idCons){
+        console.log("ok2");
         return "atraiter";
       }else if(emplacement == st && this.idLoc){
+        console.log("ok3");
         return "valider";
       }
     }
