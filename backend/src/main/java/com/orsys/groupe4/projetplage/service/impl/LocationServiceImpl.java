@@ -25,10 +25,24 @@ public class LocationServiceImpl implements LocationService{
 	public List<Location> toutesLocations(Long idCons) {
 		return dao.reservationByIdCons(idCons);
 	}
+	
+	public List<Location> toutesLocationsLocataires(Long idLoc) {
+		return dao.reservationByIdLoc(idLoc);
+	}
 
 	@Override
 	public List<Location> locationATraiter(Long idCons) {
 		return dao.reservationATraiterByIdCons(idCons);
+	}
+
+	@Override
+	public boolean validerLocation(Long idLocation) {
+		return dao.valider(idLocation) == 1;
+	}
+
+	@Override
+	public boolean annulerLocation(Long idLocation) {
+		return dao.annuler(idLocation) == 1;
 	}
 
 }

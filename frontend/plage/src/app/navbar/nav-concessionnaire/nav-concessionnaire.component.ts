@@ -9,7 +9,7 @@ export class NavConcessionnaireComponent {
 
   deconnection() {
     sessionStorage.removeItem("idCons");
-    sessionStorage.setItem("message","Deconnexion concessionnaire réussi !");
+    sessionStorage.setItem("message","Deconnexion de l'espace concessionnaire réussi !");
     window.location.reload();
   }
 }
