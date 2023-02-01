@@ -1,16 +1,17 @@
-<div *ngIf="!cardDetailsVisible">
+<div *ngIf="!cardDetailsVisible && model.length != 0">
     <button type="button" class="btn btn-primary" (click)="clickDetail()">
         Details
     </button>
 </div>
-<div *ngIf="cardDetailsVisible">
-    <td>
-        <button type="button" class="btn btn-primary" (click)="clickDetail()">
-            Moins de détails
-        </button>
-    </td>
+<div *ngIf="cardDetailsVisible && model.length != 0">
+    <button type="button" class="btn btn-primary" (click)="clickDetail()">
+        Moins de détails
+    </button>
 </div>
-<table class="table table-striped">
+<div *ngIf="model.length == 0">
+    <div class="alert alert-info">Aucune location a afficher!</div>
+</div>
+<table class="table table-striped" *ngIf="model.length != 0">
     <thead>
         <tr>
             <th scope="col">#</th>
@@ -37,19 +38,7 @@
                         </div>
                     </div>
                 </div>
-                <!--<div *ngIf="!cardDetailsVisible">
-                    <button type="button" class="btn btn-primary" (click)="clickDetail()">
-                        Details
-                    </button>
-                </div>-->
             </td>
-            <!--<div *ngIf="cardDetailsVisible">
-                <td>
-                    <button type="button" class="btn btn-primary" (click)="clickDetail()">
-                        X
-                    </button>
-                </td>
-            </div>-->
         </tr>
     </tbody>
 </table>

@@ -12,10 +12,10 @@ import com.orsys.groupe4.projetplage.service.LocationService;
 
 @Service
 @Transactional
-public class LocationServiceImpl implements LocationService{
-	
+public class LocationServiceImpl implements LocationService {
+
 	private LocationDao dao;
-	
+
 	public LocationServiceImpl(LocationDao dao) {
 		super();
 		this.dao = dao;
@@ -24,7 +24,7 @@ public class LocationServiceImpl implements LocationService{
 	public List<Location> toutesLocations(Long idCons) {
 		return dao.reservationByIdCons(idCons);
 	}
-	
+
 	public List<Location> toutesLocationsLocataires(Long idLoc) {
 		return dao.reservationByIdLoc(idLoc);
 	}
@@ -42,18 +42,21 @@ public class LocationServiceImpl implements LocationService{
 	@Override
 	public boolean annulerLocation(Long idLocation) {
 		return dao.annuler(idLocation) == 1;
-  }
+	}
 
-  @Override
-	public boolean creerLocation(String date, int idCons, int idLoc, List<Parasol> parasols, String remarques, int montant) {
+	@Override
+	public int creerLocation(String date, int idCons, int idLoc, String remarques, int montant) {
 		int id = dao.recupererId() + 1;
-		boolean ok = dao.ajouterReservation(id, date, idCons, idLoc, remarques, montant)==1;
-		for(Parasol p: parasols){
-			if (dao.ajouterParasolsLocation(p.getId(), id)!=1){
-				ok = false;
-			}
+		boolean ok = dao.ajouterReservation(id, date, idCons, idLoc, remarques, montant) == 1;
+		if (!ok) {
+			id = -1;
 		}
-		return ok;
+		return id;
+	}
+
+	@Override
+	public boolean creerParasolsLocation(int idLocation, int idParasol) {
+		return dao.ajouterParasolsLocation(idParasol,idLocation) == 1;
 	}
 
 }

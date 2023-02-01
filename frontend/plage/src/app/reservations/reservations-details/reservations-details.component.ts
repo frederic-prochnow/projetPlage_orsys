@@ -20,11 +20,11 @@ export class ReservationsDetailsComponent {
     this.locService.validerLocation(id).subscribe({
       next: (response) => {
         if (response) {
-          let res = "Validation de la location num " + id + "réussi !";
+          let res = "Validation de la location numéro " + id + " réussi !";
           sessionStorage.setItem("message", res);
           window.location.reload();
         } else {
-          let res = "Validation de la location num " + id + "en échec !";
+          let res = "Validation de la location numéro " + id + " en échec !";
           sessionStorage.setItem("message_erreur", res);
         }
       }
@@ -35,11 +35,11 @@ export class ReservationsDetailsComponent {
     this.locService.annulerLocation(id).subscribe({
       next: (response) => {
         if (response) {
-          let res = "Annulation de la location num " + id + "réussi !";
+          let res = "Annulation de la location numéro " + id + " réussi !";
           sessionStorage.setItem("message", res);
           window.location.reload();
         } else {
-          let res = "Annulation de la location num " + id + "en échec !";
+          let res = "Annulation de la location numéro " + id + " en échec !";
           sessionStorage.setItem("message_erreur", res);
         }
       }

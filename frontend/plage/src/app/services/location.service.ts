@@ -14,28 +14,32 @@ export class LocationService {
   
   locationATraiter() {
     const id = sessionStorage.getItem("idCons");
-    return this.http.get<Location[]>(this.link+"atraiter/"+id);
+    return this.http.get<Location[]>(this.link+"locations/atraiter/"+id);
   }
 
   location() {
     const id = sessionStorage.getItem("idCons");
-    return this.http.get<Location[]>(this.link+id);
+    return this.http.get<Location[]>(this.link+"locations/"+id);
   }
 
   locationLocataire() {
     const id = sessionStorage.getItem("idLoc");
-    return this.http.get<Location[]>(this.link+"locataire/"+id);
+    return this.http.get<Location[]>(this.link+"locations/locataire/"+id);
   }
 
   validerLocation(idLocation: number) {
-    return this.http.get<boolean>(this.link+"valider/"+idLocation);
+    return this.http.get<boolean>(this.link+"locations/valider/"+idLocation);
   }
 
   annulerLocation(idLocation: number) {
-    return this.http.get<boolean>(this.link+"annuler/"+idLocation);
+    return this.http.get<boolean>(this.link+"locations/annuler/"+idLocation);
   }
 
-  nouvelleLocation(date:string, idCons:number, idLoc:string, parasols:Parasol[], remarques: string, montant:number){
-    return this.http.post(this.link+"location/creation/", {date:date, idCons:idCons, idLoc:idLoc, parasols:parasols, remarques:remarques, montant:montant})
+  nouvelleLocation(date:string, idCons:number, idLoc:string, remarques: string, montant:number){
+    return this.http.post<number>(this.link+"location/creation/?date="+date+"&idCons="+idCons+"&idLoc="+idLoc+"&remarques="+remarques+"&montant="+montant, {})
+  }
+
+  ajoutParasolsLocation(idLocation: number, idParasol:number){
+    return this.http.post<number>(this.link+"location/creation/parasols/?idLocation="+idLocation+"&idParasol="+idParasol, {});
   }
 }

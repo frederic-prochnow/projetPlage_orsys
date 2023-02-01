@@ -1,7 +1,7 @@
 <div class="alert alert-success" *ngIf="message!=null">{{message}}</div>
 <div class="alert alert-error" *ngIf="message_erreur!=null">{{message_erreur}}</div>
 <div id="cardAll" *ngIf="!(type =='Cons') && !(type== 'Loc') && idCons == null && idLoc == null">
-  <div id="cardAuth" class="card border-secondary mb-3">
+ <div id="cardAuth" class="card border-secondary mb-3">
     <div class="card-header">Connectez-vous !</div>
     <div class="card-body text-secondary">
       <form #authForm="ngForm">
@@ -16,13 +16,13 @@
             [(ngModel)]="model.motDePasse" name="mdp" #mdp="ngModel">
         </div>
         <div class="alert alert-danger" *ngIf="type=='NO'">
-          Mot de passe requis
+          Erreur dans le mot de passe et/ou login
         </div>
         <button type="button" class="btn btn-primary" (click)="authentification()">Connection</button>
       </form>
     </div>
   </div>
-  <img src = "Welcome-to-the-beach.jpg">
+  <img src = "https://evasion-online.com/image-photo/plages+de+france/istock-649070908.jpg"/>
 </div>
 <div *ngIf="type=='Cons' || idCons != null">
   <app-nav-concessionnaire></app-nav-concessionnaire>

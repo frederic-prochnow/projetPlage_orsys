@@ -38,12 +38,12 @@
     <div *ngIf="item.statut.nom == 'ATraiter' && idLoc == null">
     <tr>
         <td>
-            <button type="button" class="btn btn-outline-success" (click)="valider(item.id)">
+            <button type="button" class="btn btn-outline-success" (click)="valider(item.id==null?0:item.id)">
                 Valider
             </button>
         </td>
         <td>
-            <button type="button" class="btn btn-outline-danger" (click)="annuler(item.id)">
+            <button type="button" class="btn btn-outline-danger" (click)="annuler(item.id==null?0:item.id)">
                 Refuser
             </button>
         </td>

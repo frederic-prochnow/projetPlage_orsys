@@ -42,10 +42,15 @@ public class LocationRestController {
 	@GetMapping("locations/annuler/{idLocation}")
 	public boolean annulerLocation(@PathVariable Long idLocation) {
 		return service.annulerLocation(idLocation);
+	}
 
 	@PostMapping("location/creation/")
-	public boolean creerLocation(@RequestParam String date, @RequestParam int idCons, @RequestParam int idLoc, @RequestParam List<Parasol> parasols, @RequestParam String remarques, @RequestParam int montant) {
-		return service.creerLocation(date, idCons, idLoc, parasols, remarques, montant);
-
+	public int creerLocation(@RequestParam String date, @RequestParam int idCons, @RequestParam int idLoc, @RequestParam String remarques, @RequestParam int montant) {
+		return service.creerLocation(date, idCons, idLoc, remarques, montant);
+	}
+	
+	@PostMapping("location/creation/parasols")
+	public boolean creerParasolsLocation(@RequestParam int idLocation, @RequestParam int idParasol) {
+		return service.creerParasolsLocation(idLocation, idParasol);
 	}
 }
