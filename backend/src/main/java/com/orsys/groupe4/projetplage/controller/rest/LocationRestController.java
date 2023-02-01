@@ -37,12 +37,12 @@ public class LocationRestController {
 	}
 	
 	@GetMapping("locations/valider/{idLocation}")
-	public void validerLocation(@PathVariable Long idLocation) {
-		service.validerLocation(idLocation);
+	public boolean validerLocation(@PathVariable Long idLocation) {
+		return service.validerLocation(idLocation);
 	}
 	
 	@GetMapping("locations/annuler/{idLocation}")
-	public void annulerLocation(@PathVariable Long idLocation) {
-		service.annulerLocation(idLocation);
+	public boolean annulerLocation(@PathVariable Long idLocation) {
+		return service.annulerLocation(idLocation);
 	}
 }

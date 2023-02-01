@@ -18,19 +18,19 @@ export class LocationService {
 
   location() {
     const id = sessionStorage.getItem("idCons");
-    return this.http.get<Location[]>(this.link+"locataire/"+id);
+    return this.http.get<Location[]>(this.link+id);
   }
 
   locationLocataire() {
     const id = sessionStorage.getItem("idLoc");
-    return this.http.get<Location[]>(this.link+id);
+    return this.http.get<Location[]>(this.link+"locataire/"+id);
   }
 
   validerLocation(idLocation: number) {
-    this.http.get(this.link+"valider/"+idLocation);
+    return this.http.get<boolean>(this.link+"valider/"+idLocation);
   }
 
   annulerLocation(idLocation: number) {
-    this.http.get(this.link+"annuler/"+idLocation);
+    return this.http.get<boolean>(this.link+"annuler/"+idLocation);
   }
 }

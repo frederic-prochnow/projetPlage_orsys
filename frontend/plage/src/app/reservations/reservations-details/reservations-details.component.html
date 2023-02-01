@@ -35,7 +35,7 @@
             </table>
         </td>
     </tr>
-    <div *ngIf="item.statut.nom == 'ATraiter'">
+    <div *ngIf="item.statut.nom == 'ATraiter' && idLoc == null">
     <tr>
         <td>
             <button type="button" class="btn btn-outline-success" (click)="valider(item.id)">

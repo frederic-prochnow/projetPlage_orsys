@@ -6,7 +6,7 @@
 <div *ngIf="cardDetailsVisible">
     <td>
         <button type="button" class="btn btn-primary" (click)="clickDetail()">
-            X
+            Moins de détails
         </button>
     </td>
 </div>
@@ -37,19 +37,19 @@
                         </div>
                     </div>
                 </div>
-                <div *ngIf="!cardDetailsVisible">
+                <!--<div *ngIf="!cardDetailsVisible">
                     <button type="button" class="btn btn-primary" (click)="clickDetail()">
                         Details
                     </button>
-                </div>
+                </div>-->
             </td>
-            <div *ngIf="cardDetailsVisible">
+            <!--<div *ngIf="cardDetailsVisible">
                 <td>
                     <button type="button" class="btn btn-primary" (click)="clickDetail()">
                         X
                     </button>
                 </td>
-            </div>
+            </div>-->
         </tr>
     </tbody>
 </table>

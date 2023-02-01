@@ -12,8 +12,8 @@ public interface LocationService {
 	
 	List<Location> locationATraiter(Long idCons);
 
-	void validerLocation(Long idLocation);
+	boolean validerLocation(Long idLocation);
 
-	void annulerLocation(Long idLocation);
+	boolean annulerLocation(Long idLocation);
 
 }

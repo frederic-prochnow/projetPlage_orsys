@@ -17,10 +17,13 @@ export class AuthentificationComponent implements OnInit{
   idLoc = sessionStorage.getItem("idLoc");
   idCons = sessionStorage.getItem("idCons");
   message : string | null = "";
+  message_erreur : string | null = "";
 
   ngOnInit(): void {
     this.message = sessionStorage.getItem("message");
+    this.message_erreur = sessionStorage.getItem("message_erreur");
     sessionStorage.removeItem("message");
+    sessionStorage.removeItem("message_erreur");
   }
 
   authentification() {

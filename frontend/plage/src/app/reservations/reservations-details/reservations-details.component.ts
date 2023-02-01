@@ -9,20 +9,40 @@ import { Location } from '../../models/location';
 })
 export class ReservationsDetailsComponent {
 
-  constructor(private locService: LocationService) {}
+  constructor(private locService: LocationService) { }
+
+  idLoc = sessionStorage.getItem("idLoc");
 
   @Input()
   item!: Location;
 
-  valider(id: number){
-    this.locService.validerLocation(id);
-    let res = "Validation de la location num "+id +"réussi !";
-    sessionStorage.setItem("message",res);
+  valider(id: number) {
+    this.locService.validerLocation(id).subscribe({
+      next: (response) => {
+        if (response) {
+          let res = "Validation de la location num " + id + "réussi !";
+          sessionStorage.setItem("message", res);
+          window.location.reload();
+        } else {
+          let res = "Validation de la location num " + id + "en échec !";
+          sessionStorage.setItem("message_erreur", res);
+        }
+      }
+    });
   }
 
-  annuler(id: number){
-    this.locService.annulerLocation(id);
-    let res = "Annulation de la location num "+id +"réussi !";
-    sessionStorage.setItem("message",res);
+  annuler(id: number) {
+    this.locService.annulerLocation(id).subscribe({
+      next: (response) => {
+        if (response) {
+          let res = "Annulation de la location num " + id + "réussi !";
+          sessionStorage.setItem("message", res);
+          window.location.reload();
+        } else {
+          let res = "Annulation de la location num " + id + "en échec !";
+          sessionStorage.setItem("message_erreur", res);
+        }
+      }
+    });
   }
 }

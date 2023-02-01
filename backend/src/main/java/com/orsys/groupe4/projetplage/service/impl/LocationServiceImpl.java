@@ -36,13 +36,13 @@ public class LocationServiceImpl implements LocationService{
 	}
 
 	@Override
-	public void validerLocation(Long idLocation) {
-		dao.valider(idLocation);
+	public boolean validerLocation(Long idLocation) {
+		return dao.valider(idLocation) == 1;
 	}
 
 	@Override
-	public void annulerLocation(Long idLocation) {
-		dao.annuler(idLocation);
+	public boolean annulerLocation(Long idLocation) {
+		return dao.annuler(idLocation) == 1;
 	}
 
 }
