@@ -9,7 +9,7 @@ export class NavLocataireComponent {
 
   deconnection() {
     sessionStorage.removeItem("idLoc");
-    sessionStorage.setItem("message","Deconnexion locataire réussi !");
+    sessionStorage.setItem("message","Deconnexion de l'espace locataire réussi !");
     window.location.reload();
   }
 }

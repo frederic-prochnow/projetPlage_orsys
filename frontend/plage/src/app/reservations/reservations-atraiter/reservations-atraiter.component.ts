@@ -1,17 +1,17 @@
 import { Component, OnInit } from '@angular/core';
-import { Location } from '../models/location';
-import { LocationService } from '../services/location.service';
+import { Location } from '../../models/location';
+import { LocationService } from '../../services/location.service';
 
 @Component({
   selector: 'app-reservations-atraiter',
   templateUrl: './reservations-atraiter.component.html',
   styleUrls: ['./reservations-atraiter.component.css']
 })
-export class ReservationsATraiterComponent implements OnInit{
+export class ReservationsATraiterComponent implements OnInit {
 
   model: Location[] = [];
 
-  constructor(private locServ: LocationService) {}
+  constructor(private locServ: LocationService) { }
 
   ngOnInit(): void {
     this.locServ.locationATraiter().subscribe({
@@ -19,11 +19,5 @@ export class ReservationsATraiterComponent implements OnInit{
         this.model = response;
       }
     });
-  }
-
-  cardDetailsVisible = false;
-
-  clickDetail() {
-    this.cardDetailsVisible=!this.cardDetailsVisible;
   }
 }

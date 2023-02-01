@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Utilisateur } from 'src/app/models/utilisateur';
 import { AuthService } from '../services/auth.service';
 
@@ -7,7 +7,7 @@ import { AuthService } from '../services/auth.service';
   templateUrl: './authentification.component.html',
   styleUrls: ['./authentification.component.css']
 })
-export class AuthentificationComponent{
+export class AuthentificationComponent implements OnInit{
 
   constructor(private authService: AuthService) {}
 
@@ -16,7 +16,15 @@ export class AuthentificationComponent{
   type = "";
   idLoc = sessionStorage.getItem("idLoc");
   idCons = sessionStorage.getItem("idCons");
+  message : string | null = "";
+  message_erreur : string | null = "";
 
+  ngOnInit(): void {
+    this.message = sessionStorage.getItem("message");
+    this.message_erreur = sessionStorage.getItem("message_erreur");
+    sessionStorage.removeItem("message");
+    sessionStorage.removeItem("message_erreur");
+  }
 
   authentification() {
     if(this.idLoc != null){
@@ -29,12 +37,14 @@ export class AuthentificationComponent{
           if(response != -1){
             this.type = "Loc";
             sessionStorage.setItem("idLoc",""+response);
+            window.location.reload();
           }else{
             this.authService.seConnecterConcessionnaire(this.model).subscribe({
               next: (response) => {
                 if(response != -1){
                   this.type = "Cons";
                   sessionStorage.setItem("idCons",""+response);
+                  window.location.reload();
                 }else{
                   this.type = "NO";
                 }

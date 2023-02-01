@@ -12,9 +12,15 @@ import { NavConcessionnaireComponent } from './navbar/nav-concessionnaire/nav-co
 import { CalendrierComponent } from './calendrier/calendrier.component';
 import { DispositionComponent } from './calendrier/disposition/disposition.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-import { ReservationsATraiterComponent } from './reservations-atraiter/reservations-atraiter.component';
-import { ReservationsDetailsComponent } from './reservations-details/reservations-details.component';
+import { ReservationsATraiterComponent } from './reservations/reservations-atraiter/reservations-atraiter.component';
+import { ReservationsDetailsComponent } from './reservations/reservations-details/reservations-details.component';
+import { ReservationsListeComponent } from './reservations/reservations-liste/reservations-liste.component';
+import { ReservationsTotalComponent } from './reservations/reservations-total/reservations-total.component';
+import { AccueilLocataireComponent } from './navigation/accueil-locataire/accueil-locataire.component';
+import { AccueilConcessionnaireComponent } from './navigation/accueil-concessionnaire/accueil-concessionnaire.component';
+import { ReservationsLocataireComponent } from './reservations/reservations-locataire/reservations-locataire.component';
 import { AjouterReservationComponent } from './ajouter-reservation/ajouter-reservation.component';
+
 
 @NgModule({
   declarations: [
@@ -24,8 +30,13 @@ import { AjouterReservationComponent } from './ajouter-reservation/ajouter-reser
     NavConcessionnaireComponent,
     CalendrierComponent,
     DispositionComponent,
+    ReservationsListeComponent,
     ReservationsATraiterComponent,
     ReservationsDetailsComponent,
+    ReservationsTotalComponent,
+    AccueilLocataireComponent,
+    AccueilConcessionnaireComponent,
+    ReservationsLocataireComponent
     AjouterReservationComponent
   ],
   imports: [

@@ -24,13 +24,28 @@ public class LocationRestController {
 		return service.toutesLocations(idCons);
 	}
 	
+	@GetMapping("locations/locataire/{idLoc}")
+	public List<Location> getLocationLocataire(@PathVariable Long idLoc) {
+		return service.toutesLocationsLocataires(idLoc);
+	}
+	
 	@GetMapping("locations/atraiter/{idCons}")
 	public List<Location> getLocationATraiter(@PathVariable Long idCons) {
 		return service.locationATraiter(idCons);
 	}
+	
+	@GetMapping("locations/valider/{idLocation}")
+	public boolean validerLocation(@PathVariable Long idLocation) {
+		return service.validerLocation(idLocation);
+	}
+	
+	@GetMapping("locations/annuler/{idLocation}")
+	public boolean annulerLocation(@PathVariable Long idLocation) {
+		return service.annulerLocation(idLocation);
 
 	@PostMapping("location/creation/")
 	public boolean creerLocation(@RequestParam String date, @RequestParam int idCons, @RequestParam int idLoc, @RequestParam List<Parasol> parasols, @RequestParam String remarques, @RequestParam int montant) {
 		return service.creerLocation(date, idCons, idLoc, parasols, remarques, montant);
+
 	}
 }

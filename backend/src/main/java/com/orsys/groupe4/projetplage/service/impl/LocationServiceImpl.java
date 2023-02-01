@@ -24,6 +24,10 @@ public class LocationServiceImpl implements LocationService{
 	public List<Location> toutesLocations(Long idCons) {
 		return dao.reservationByIdCons(idCons);
 	}
+	
+	public List<Location> toutesLocationsLocataires(Long idLoc) {
+		return dao.reservationByIdLoc(idLoc);
+	}
 
 	@Override
 	public List<Location> locationATraiter(Long idCons) {
@@ -31,6 +35,16 @@ public class LocationServiceImpl implements LocationService{
 	}
 
 	@Override
+	public boolean validerLocation(Long idLocation) {
+		return dao.valider(idLocation) == 1;
+	}
+
+	@Override
+	public boolean annulerLocation(Long idLocation) {
+		return dao.annuler(idLocation) == 1;
+  }
+
+  @Override
 	public boolean creerLocation(String date, int idCons, int idLoc, List<Parasol> parasols, String remarques, int montant) {
 		int id = dao.recupererId() + 1;
 		boolean ok = dao.ajouterReservation(id, date, idCons, idLoc, remarques, montant)==1;

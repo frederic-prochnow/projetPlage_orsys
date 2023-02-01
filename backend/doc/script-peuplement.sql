@@ -127,7 +127,7 @@ select * from Locataire;
 select * from Locataire natural join Utilisateur;
 
 insert into location (date_heure_debut,date_heure_fin, montantaregler_en_euros, remarques, concessionnaire_id, locataire_id, statut_id)
-values (to_timestamp('01/06/2023','DD/MM/YYYY'),to_timestamp('03/06/2023','DD/MM/YYYY'),150,'yala ça marche !',1,2,1);
+values (to_timestamp('04/06/2023','DD/MM/YYYY'),to_timestamp('06/06/2023','DD/MM/YYYY'),150,'yala ça marche encore!',1,2,1);
 
 select * from location;
 
@@ -135,10 +135,8 @@ delete from location where id = 2 or id = 3;
 delete from parasol_locations where locations_id = 2 or locations_id = 3;
 
 
-insert into parasol_locations values (1,4);
-insert into parasol_locations values (75,4);
-insert into parasol_locations values (55,4);
-insert into parasol_locations values (27,4);
-insert into parasol_locations values (7,4);
+insert into parasol_locations values (3,5);
+insert into parasol_locations values (65,5);
+insert into parasol_locations values (45,5);
 
 select * from parasol_locations pl join parasol p on pl.parasols_id = p.id join file f on p.file_id = f.id;
