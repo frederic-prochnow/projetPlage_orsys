@@ -29,7 +29,7 @@
                 <label for="date">Date sélectionnée</label>
                 <input readonly required class="form-control" name="date" type="text" [(ngModel)]="dateLocation" value="{{ dateLocation }}">
                 <label for="parasols">Parasols souhaités</label>
-                <select class="form-control" required name="parasols" multiple [(ngModel)]="parasolsSelectionnes">
+                <select (change)="calculerMontant()" class="form-control" required name="parasols" multiple [(ngModel)]="parasolsSelectionnes">
                     <option *ngFor="let number of parasolsDisponibles" value="{{number}}">
                         Parasol {{number}}
                     </option>

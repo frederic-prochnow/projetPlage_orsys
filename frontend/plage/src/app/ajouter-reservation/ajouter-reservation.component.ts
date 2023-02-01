@@ -1,5 +1,6 @@
 import { Component, Input, ViewChild, ElementRef, EventEmitter, Output } from '@angular/core';
 import { NgbDatepickerModule, NgbOffcanvas, OffcanvasDismissReasons } from '@ng-bootstrap/ng-bootstrap';
+import { File } from '../models/file';
 import { Location } from '../models/location';
 import { Parasol } from '../models/parasol';
 import { FileService } from '../services/file.service';
@@ -20,9 +21,11 @@ export class AjouterReservationComponent {
   parasolsIndisponibles: number[] = [];
   parasolsDisponibles: number[] = [];
   parasolsSelectionnes: number[] = [];
+  parasolsAEnvoyer: Parasol[] = [];
   remarque: string = "";
   montantAReglerEnEuros: number = 0;
   idLoc = sessionStorage.getItem("idLoc");
+  listFiles: File[] = [];
 
   ngOnInit(){
     
@@ -38,32 +41,48 @@ export class AjouterReservationComponent {
 
     this.fileServ.recupererFiles().subscribe({
       next: (response) => {
-        if(response){
-          console.log(response);
-        }else{
-          console.log("Problème lors de la récupération dse files");
-        }
+        this.listFiles = response;
       }
     });
 
+    console.log(this.dateLocation);
+    
+
+  }
+
+  calculerMontant(){
+
+    this.montantAReglerEnEuros = 0;
+
+    for (let p of this.parasolsSelectionnes){
+      let numeroFile:number = ((p -(p %10))/10);
+      this.montantAReglerEnEuros += this.listFiles[numeroFile].prixJournalier;
+    }
   }
 
   submitForm(){
 
     const idLocataire = this.idLoc==null?"":this.idLoc;
+    console.log(idLocataire);
     
-    /*this.locServ.nouvelleLocation(this.dateLocation, 2, idLocataire, this.parasolsSelectionnes, this.remarque, this.montantAReglerEnEuros ).subscribe({
+
+    for (let p of this.parasolsSelectionnes){
+      let numeroFile:number = ((p -(p %10))/10);
+      this.parasolsAEnvoyer.push(new Parasol(p, p, this.listFiles[numeroFile]));
+    }
+    
+    this.locServ.nouvelleLocation(this.dateLocation, 2, idLocataire, this.parasolsAEnvoyer, this.remarque, this.montantAReglerEnEuros ).subscribe({
       next: (response) => {
         if(response){
-          console.log('Bien ajouté en base');
-          ;
+          alert("Votre réservation a bien été prise en compte");
         }else{
-          console.log("Problème lors de l'ajout en base, veuillez réessayer");
+          alert("Il y a eu un problème lors de votre réservation, réessayez");
         }
       }
-    });*/
+    });
 
-
+    console.log(this.dateLocation, 2, idLocataire, this.parasolsAEnvoyer, this.remarque, this.montantAReglerEnEuros);
+    
 
     //const nouvelleLocation : Location = new Location(this.dateLocation | Date, this.dateLocation | Date +1);
   }

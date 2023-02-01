@@ -36,7 +36,7 @@ import { AjouterReservationComponent } from './ajouter-reservation/ajouter-reser
     ReservationsTotalComponent,
     AccueilLocataireComponent,
     AccueilConcessionnaireComponent,
-    ReservationsLocataireComponent
+    ReservationsLocataireComponent,
     AjouterReservationComponent
   ],
   imports: [
