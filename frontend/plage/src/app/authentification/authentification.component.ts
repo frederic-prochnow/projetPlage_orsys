@@ -39,30 +39,35 @@ export class AuthentificationComponent implements OnInit {
     } else if (this.idCons != null) {
       this.type = "Cons";
     } else {
-      /*signInWithEmailAndPassword(this.auth, this.model.email, this.model.motDePasse)
-        .then((userCredential) => {
-          // Signed in 
-          const user = userCredential.user;
-          // ...
-        })
-        .catch((error) => {
-          const errorCode = error.code;
-          const errorMessage = error.message;
-        });
-*/
-      this.authService.seConnecterLocataire(this.model).subscribe({
+      this.authService.emailExiste(this.model.email).subscribe({
         next: (response) => {
-          if (response != -1) {
-            this.type = "Loc";
-            sessionStorage.setItem("idLoc", "" + response);
-            window.location.reload();
+          if (!response) {
+            this.type = "NO-EMAIL";
           } else {
-            this.authService.seConnecterConcessionnaire(this.model).subscribe({
+            let id = 0;
+            this.authService.seConnecter(this.model).subscribe({
               next: (response) => {
-                if (response != -1) {
-                  this.type = "Cons";
-                  sessionStorage.setItem("idCons", "" + response);
-                  window.location.reload();
+                if (response) {
+                  id = response;
+                  this.authService.estConcessionnaire(this.model.email).subscribe({
+                    next: (response) => {
+                      if (response) {
+                        this.type = "Cons";
+                        sessionStorage.setItem("idCons", "" + id);
+                        window.location.reload();
+                      } else {
+                        this.authService.estLocataire(this.model.email).subscribe({
+                          next: (response) => {
+                            if (response) {
+                              this.type = "Loc";
+                              sessionStorage.setItem("idLoc", "" + id);
+                              window.location.reload();
+                            }
+                          }
+                        });
+                      }
+                    }
+                  });
                 } else {
                   this.type = "NO";
                 }

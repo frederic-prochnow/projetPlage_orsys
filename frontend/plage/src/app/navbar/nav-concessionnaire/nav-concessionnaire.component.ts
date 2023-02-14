@@ -19,7 +19,7 @@ export class NavConcessionnaireComponent {
   async deconnection() {
     sessionStorage.removeItem("idCons");
     this.dialog.open(PopupDeconnexionComponent);
-    await new Promise(f => setTimeout(f, 5000));
+    await new Promise(f => setTimeout(f, 1000));
     window.location.reload();
   }
 }

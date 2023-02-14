@@ -33,19 +33,24 @@ public class UtilisateurRestController {
 		this.serviceCons = serviceCons;
 	}
 
+	@GetMapping("utilisateur/{mail}")
+	public boolean existeEnBase(@PathVariable String mail) {
+		return service.emailExisteBDD(mail);
+	}
+
+	@GetMapping("utilisateur/connection/concessionnaire/{mail}")
+	public boolean estConcessionnaire(@PathVariable String mail) {
+		return service.estConcessionnaire(mail);
+	}
+
+	@GetMapping("utilisateur/connection/locataire/{mail}")
+	public boolean estlocataire(@PathVariable String mail) {
+		return service.estLocataire(mail);
+	}
+
 	@GetMapping("utilisateur/connection/{mail}/{mdp}")
-	public int connectionOK(@PathVariable String mail, @PathVariable String mdp) {
-		return service.verifierIdMdp(mail, mdp);
-	}
-
-	@GetMapping("utilisateur/connection/locataire/{mail}/{mdp}")
-	public int connectionLocataireOK(@PathVariable String mail, @PathVariable String mdp) {
-		return service.verifierIdMdpLocataire(mail, mdp);
-	}
-
-	@GetMapping("utilisateur/connection/concessionnaire/{mail}/{mdp}")
-	public int connectionConcessionnaireOK(@PathVariable String mail, @PathVariable String mdp) {
-		return service.verifierIdMdpConcessionnaire(mail, mdp);
+	public Long connectionOK(@PathVariable String mail, @PathVariable String mdp) {
+		return service.loginCorrect(mail, mdp);
 	}
 
 	@PostMapping("utilisateur/creation/locataire")
