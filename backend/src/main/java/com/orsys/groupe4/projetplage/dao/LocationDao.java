@@ -36,7 +36,7 @@ public interface LocationDao extends JpaRepository<Location, Long> {
 	public int ajouterReservation(@Param("id") int id, @Param("date") String date, @Param("idCons") int idCons, @Param("idLoc") int idLoc, @Param("remarques") String remarques, @Param("montant") int montant);
 
 	@Query(nativeQuery = true, value= "select max(id) from location")
-	public int recupererId();
+	public Integer recupererId();
 
 	@Modifying
 	@Query(nativeQuery = true, value= "insert into parasol_locations (parasols_id,locations_id)"

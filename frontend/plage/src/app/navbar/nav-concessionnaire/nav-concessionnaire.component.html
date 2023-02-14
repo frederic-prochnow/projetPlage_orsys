@@ -1,7 +1,9 @@
-<nav class="navbar navbar-light bg-light">
+<mat-toolbar>
     <img id="logo_navbar"
         src="https://static.vecteezy.com/ti/vecteur-libre/p2/349187-icone-de-magasin-de-vecteur-gratuit-vectoriel.jpg">
-    <span class="navbar-brand mb-0 h1">Espace concessionnaire</span>
-    <button type="button" class="btn btn-outline-primary" (click)="deconnection()">Se déconnecter</button>
-</nav>
-<br />
+    <span class="nav-spacer">Espace concessionnaire</span>
+    <button mat-icon-button class="nav-icon" (click)="deconnection()">
+      <mat-icon>logout</mat-icon> Déconnection
+    </button>
+  </mat-toolbar>
+  <br />

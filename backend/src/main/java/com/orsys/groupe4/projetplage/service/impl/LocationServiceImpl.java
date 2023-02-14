@@ -46,7 +46,8 @@ public class LocationServiceImpl implements LocationService {
 
 	@Override
 	public int creerLocation(String date, int idCons, int idLoc, String remarques, int montant) {
-		int id = dao.recupererId() + 1;
+		Integer id = dao.recupererId();
+		id = id== null ? 1 : id+1;
 		boolean ok = dao.ajouterReservation(id, date, idCons, idLoc, remarques, montant) == 1;
 		if (!ok) {
 			id = -1;

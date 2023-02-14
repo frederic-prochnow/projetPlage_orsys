@@ -1,6 +1,8 @@
-<nav class="navbar navbar-light bg-light">
+<mat-toolbar>
   <img id="logo_navbar" src="https://th.bing.com/th/id/OIP.yswkPJaHQHQDn3cVj4ecjQAAAA?pid=ImgDet&rs=1">
-  <span class="navbar-brand mb-0 h1">Espace Locataire</span>
-  <button type="button" class="btn btn-outline-primary" (click)="deconnection()">Se déconnecter</button>
-</nav>
+  <span class="nav-spacer">Espace Locataire</span>
+  <button mat-icon-button class="nav-icon" (click)="deconnection()">
+    <mat-icon>logout</mat-icon> Déconnection
+  </button>
+</mat-toolbar>
 <br />

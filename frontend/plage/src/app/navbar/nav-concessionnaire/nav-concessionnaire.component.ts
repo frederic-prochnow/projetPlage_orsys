@@ -1,4 +1,11 @@
 import { Component } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
+
+@Component({
+  selector: 'popup-deconnexion',
+  templateUrl: '../popup-deconnexion.html',
+})
+export class PopupDeconnexionComponent {}
 
 @Component({
   selector: 'app-nav-concessionnaire',
@@ -7,9 +14,12 @@ import { Component } from '@angular/core';
 })
 export class NavConcessionnaireComponent {
 
-  deconnection() {
+  constructor(public dialog: MatDialog) {}
+
+  async deconnection() {
     sessionStorage.removeItem("idCons");
-    sessionStorage.setItem("message","Deconnexion de l'espace concessionnaire réussi !");
+    this.dialog.open(PopupDeconnexionComponent);
+    await new Promise(f => setTimeout(f, 5000));
     window.location.reload();
   }
 }

@@ -1,32 +1,61 @@
-<div class="alert alert-success" *ngIf="message!=null">{{message}}</div>
-<div class="alert alert-error" *ngIf="message_erreur!=null">{{message_erreur}}</div>
-<div id="cardAll" *ngIf="!(type =='Cons') && !(type== 'Loc') && idCons == null && idLoc == null">
- <div id="cardAuth" class="card border-secondary mb-3">
+<div class="alert alert-success" *ngIf="message != null">{{ message }}</div>
+<div class="alert alert-error" *ngIf="message_erreur != null">
+  {{ message_erreur }}
+</div>
+<div
+  id="cardAll"
+  *ngIf="
+    !(type == 'Cons') && !(type == 'Loc') && idCons == null && idLoc == null
+  "
+>
+  <div id="cardAuth" class="card border-secondary mb-3">
     <div class="card-header">Connectez-vous !</div>
     <div class="card-body text-secondary">
       <form #authForm="ngForm">
         <div class="form-group">
           <label for="inputEmail">Email</label>
-          <input type="email" class="form-control" id="inputEmail" aria-describedby="emailHelp"
-            placeholder="Entrer votre email" required [(ngModel)]="model.email" name="name" #email="ngModel">
+          <input
+            type="email"
+            class="form-control"
+            id="inputEmail"
+            aria-describedby="emailHelp"
+            placeholder="Entrer votre email"
+            required
+            [(ngModel)]="model.email"
+            name="name"
+            #email="ngModel"
+          />
         </div>
         <div class="form-group">
           <label for="inputMDP">Mot de passe</label>
-          <input type="password" class="form-control" id="inputMDP" placeholder="Mot de passe ?" required
-            [(ngModel)]="model.motDePasse" name="mdp" #mdp="ngModel">
+          <input
+            type="password"
+            class="form-control"
+            id="inputMDP"
+            placeholder="Mot de passe ?"
+            required
+            [(ngModel)]="model.motDePasse"
+            name="mdp"
+            #mdp="ngModel"
+          />
         </div>
-        <div class="alert alert-danger" *ngIf="type=='NO'">
+        <div class="alert alert-danger" *ngIf="type == 'NO'">
           Erreur dans le mot de passe et/ou login
         </div>
-        <button type="button" class="btn btn-primary" (click)="authentification()">Connection</button>
+        <button
+          type="button"
+          class="btn btn-primary"
+          (click)="authentification()"
+        >
+          Connection
+        </button>
       </form>
     </div>
   </div>
-  <img src = "https://evasion-online.com/image-photo/plages+de+france/istock-649070908.jpg"/>
 </div>
-<div *ngIf="type=='Cons' || idCons != null">
+<div *ngIf="type == 'Cons' || idCons != null">
   <app-nav-concessionnaire></app-nav-concessionnaire>
 </div>
-<div *ngIf="type=='Loc' || idLoc != null">
+<div *ngIf="type == 'Loc' || idLoc != null">
   <app-nav-locataire></app-nav-locataire>
 </div>

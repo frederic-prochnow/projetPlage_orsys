@@ -1,10 +1,10 @@
-import { NgModule } from '@angular/core';
+import { NgModule, Component, HostBinding } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { AppComponent } from './app.component';
 
 import { AuthentificationComponent } from './authentification/authentification.component';
 import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AuthService } from './services/auth.service';
 import { HttpClientModule } from '@angular/common/http';
 import { NavLocataireComponent } from './navbar/nav-locataire/nav-locataire.component';
@@ -20,6 +20,18 @@ import { AccueilLocataireComponent } from './navigation/accueil-locataire/accuei
 import { AccueilConcessionnaireComponent } from './navigation/accueil-concessionnaire/accueil-concessionnaire.component';
 import { ReservationsLocataireComponent } from './reservations/reservations-locataire/reservations-locataire.component';
 import { AjouterReservationComponent } from './ajouter-reservation/ajouter-reservation.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { OpenCloseComponent } from './open-close/open-close.component';
+
+import {MatProgressBarModule} from '@angular/material/progress-bar';
+import { PlatformModule } from '@angular/cdk/platform';
+import {MatToolbarModule} from '@angular/material/toolbar';
+import {MatIconModule} from '@angular/material/icon';
+import {MatTabsModule} from '@angular/material/tabs';
+import {MatCardModule} from '@angular/material/card';
+import {MatFormFieldModule} from '@angular/material/form-field';
+import {MatTableModule} from '@angular/material/table';
+import {MatDialogModule} from '@angular/material/dialog';
 
 
 @NgModule({
@@ -37,14 +49,26 @@ import { AjouterReservationComponent } from './ajouter-reservation/ajouter-reser
     AccueilLocataireComponent,
     AccueilConcessionnaireComponent,
     ReservationsLocataireComponent,
-    AjouterReservationComponent
+    AjouterReservationComponent,
+    OpenCloseComponent
   ],
   imports: [
     BrowserModule,
     CommonModule,
     FormsModule,
     HttpClientModule,
-    NgbModule
+    NgbModule,
+    BrowserAnimationsModule,
+    MatProgressBarModule,
+    PlatformModule,
+    MatToolbarModule,
+    MatIconModule,
+    MatTabsModule,
+    MatCardModule,
+    MatFormFieldModule,
+    MatTableModule,
+    MatDialogModule,
+    ReactiveFormsModule
   ],
   providers: [AuthService],
   bootstrap: [AppComponent]

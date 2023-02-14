@@ -71,7 +71,7 @@ export class AjouterReservationComponent {
       this.parasolsAEnvoyer.push(new Parasol(p, p, this.listFiles[numeroFile]));
     }
     
-    this.locServ.nouvelleLocation(this.dateLocation, 1, idLocataire, this.remarque, this.montantAReglerEnEuros ).subscribe({
+    this.locServ.nouvelleLocation(this.dateLocation, 2, idLocataire, this.remarque, this.montantAReglerEnEuros ).subscribe({
       next: (response) => {
         if(response==-1){
           alert("Il y a eu un problème lors de votre réservation, réessayez");
