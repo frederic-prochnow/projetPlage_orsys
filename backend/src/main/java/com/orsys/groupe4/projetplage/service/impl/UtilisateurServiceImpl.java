@@ -8,13 +8,14 @@ import org.springframework.transaction.annotation.Transactional;
 import java.math.BigInteger;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
+import java.util.Random;
 
 @Service
 @Transactional
 public class UtilisateurServiceImpl implements UtilisateurService {
     
     private UtilisateurDao dao;
-    private java.util.Random random;
+    private java.util.Random random = new Random();
     
     public UtilisateurServiceImpl(UtilisateurDao dao) {
         super();
