@@ -19,7 +19,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 
 @ExtendWith(SpringExtension.class)
 @WebMvcTest(UtilisateurRestController.class)
-public class UtilisateurRestControllerTest {
+class UtilisateurRestControllerTest {
     
     @MockBean
     UtilisateurService service;
@@ -38,7 +38,7 @@ public class UtilisateurRestControllerTest {
     private final String mdp = "12345";
     
     @Test
-    public void testExisteEnBase() throws Exception {
+    void testExisteEnBase() throws Exception {
         boolean res = true;
         
         Mockito.when(service.emailExisteBDD(mail)).thenReturn(res);
@@ -49,7 +49,7 @@ public class UtilisateurRestControllerTest {
     }
     
     @Test
-    public void testEstConcessionnaire() throws Exception {
+    void testEstConcessionnaire() throws Exception {
         boolean res = true;
         
         Mockito.when(service.estConcessionnaire(mail)).thenReturn(res);
@@ -60,7 +60,7 @@ public class UtilisateurRestControllerTest {
     }
     
     @Test
-    public void testEstLocataire() throws Exception {
+    void testEstLocataire() throws Exception {
         boolean res = true;
         
         Mockito.when(service.estLocataire(mail)).thenReturn(res);
@@ -71,7 +71,7 @@ public class UtilisateurRestControllerTest {
     }
 
     /*@Test
-    public void testLoginCorrect() throws Exception {
+    void testLoginCorrect() throws Exception {
         Mockito.when(service.loginCorrect(mail,mdp)).thenReturn(12L);
 
         mockMvc.perform(get("/api/utilisateur/connection/"+mail+"/"+mdp))

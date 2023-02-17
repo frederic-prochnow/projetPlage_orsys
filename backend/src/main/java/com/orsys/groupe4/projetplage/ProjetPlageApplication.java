@@ -8,25 +8,29 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.Scope;
 import org.springframework.scheduling.annotation.EnableScheduling;
 
+import java.util.logging.Logger;
+
 
 @EnableScheduling
 @SpringBootApplication
 public class ProjetPlageApplication {
-
-	public static void main(String[] args) {
-		SpringApplication.run(ProjetPlageApplication.class, args);
-	}
-
-	//@Bean
-	@Scope(ConfigurableBeanFactory.SCOPE_SINGLETON)
-	public CommandLineRunner commandLineRunner(ApplicationContext applicationContext) {
-		return args -> {
-
-			String[] noms = applicationContext.getBeanDefinitionNames();
-
-			for (String nom : noms) {
-				System.out.println(nom + " : " + applicationContext.getBean(nom).getClass().getSimpleName());
-			}
-		};
-	}
+    
+    private final Logger logger = Logger.getLogger(ProjetPlageApplication.class.getName());
+    
+    public static void main(String[] args) {
+        SpringApplication.run(ProjetPlageApplication.class, args);
+    }
+    
+    //@Bean
+    @Scope(ConfigurableBeanFactory.SCOPE_SINGLETON)
+    public CommandLineRunner commandLineRunner(ApplicationContext applicationContext) {
+        return args -> {
+            
+            String[] noms = applicationContext.getBeanDefinitionNames();
+            
+            for (String nom : noms) {
+                logger.info(nom + " : " + applicationContext.getBean(nom).getClass().getSimpleName());
+            }
+        };
+    }
 }

@@ -1,27 +1,19 @@
 package com.orsys.groupe4.projetplage.business;
 
+import lombok.Getter;
+import lombok.Setter;
+
 import javax.persistence.Entity;
 
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
-import lombok.ToString;
-
+@Getter
+@Setter
 @Entity
 public class Concessionnaire extends Utilisateur {
-
-	private String numeroDeTelephone;
-
-	public Concessionnaire() {
-		super();
-	}
-
-	public String getNumeroDeTelephone() {
-		return numeroDeTelephone;
-	}
-
-	public void setNumeroDeTelephone(String numeroDeTelephone) {
-		this.numeroDeTelephone = numeroDeTelephone;
-	}
-
+    
+    private String numeroDeTelephone;
+    
+    public Concessionnaire() {
+        super();
+    }
+    
 }

@@ -12,15 +12,15 @@ import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 @ExtendWith(SpringExtension.class)
 @DataJpaTest
 @AutoConfigureTestDatabase(replace = AutoConfigureTestDatabase.Replace.NONE)
-public class UtilisateurDaoTest {
-
+class UtilisateurDaoTest {
+    
     @Autowired
     UtilisateurDao dao;
-
+    
     private final String mail = "toto@titi.fr";
-
+    
     @Test
-    public void testGetId(){
+    void testGetId() {
         int res = dao.getId(mail);
         assertThat(res == 2);
     }

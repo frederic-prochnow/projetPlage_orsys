@@ -16,7 +16,7 @@ import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 import static org.mockito.Mockito.*;
 
 @ExtendWith(MockitoExtension.class)
-public class FileServiceTest {
+class FileServiceTest {
     
     @InjectMocks
     FileServiceImpl fileService;
@@ -25,7 +25,7 @@ public class FileServiceTest {
     FileDao fileDao;
     
     @Test
-    public void testRecupererFiles() {
+    void testRecupererFiles() {
         List<File> liste = FileRessource.getListeFileAleatoire(3);
         when(fileDao.findAll()).thenReturn(liste);
         

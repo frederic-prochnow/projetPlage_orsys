@@ -21,7 +21,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 
 @ExtendWith(SpringExtension.class)
 @WebMvcTest(FileRestController.class)
-public class FileRestControllerTest {
+class FileRestControllerTest {
     
     @MockBean
     FileService service;
@@ -30,7 +30,7 @@ public class FileRestControllerTest {
     MockMvc mockMvc;
     
     @Test
-    public void testGetFiles() throws Exception {
+    void testGetFiles() throws Exception {
         List<File> liste = FileRessource.getListeFileAleatoire(3);
         Mockito.when(service.recupererFiles()).thenReturn(liste);
         

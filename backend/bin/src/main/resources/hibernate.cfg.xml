@@ -10,7 +10,7 @@
         <property name="hibernate.connection.password">1234</property>
         <property name="hibernate.connection.url">jdbc:postgresql://localhost:5432/plage</property>
         <!-- Update database on startup -->
-        <property name="hibernate.hbm2ddl.auto">update</property>
+        <property name="hibernate.hbm2ddl.auto">validate</property>
 
         <mapping class="com.orsys.groupe4.projetplage.business.Concessionnaire"/>
         <mapping class="com.orsys.groupe4.projetplage.business.File"/>
