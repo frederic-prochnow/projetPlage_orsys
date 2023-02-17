@@ -21,7 +21,11 @@ public class UtilisateurServiceImpl implements UtilisateurService {
 		this.dao = dao;
 	}
 
-	private String crypterMotDePasse(String mdpClair,String sel){
+	public String crypterMotDePasse(String mdpClair) {
+		return crypterMotDePasse(mdpClair,"");
+	}
+
+	public String crypterMotDePasse(String mdpClair,String sel){
 		String res = "";
 		try {
 			MessageDigest md = MessageDigest.getInstance("SHA-256");
@@ -38,16 +42,16 @@ public class UtilisateurServiceImpl implements UtilisateurService {
 	 * Generer une chaine aleatoire comprise entre 50 et 100 caractères
 	 * @return la châine de caractère aléatoire
 	 */
-	private static String genererSel() {
+	public String genererSel() {
 		int n = 50 + ((int) (Math.random() * 50));
-		String str = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+		String alfaB = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
 				+ "abcdefghijklmnopqrstuvxyz123456789&*/-+";
 
 		StringBuilder s = new StringBuilder(n);
 
 		for (int i = 0; i < n; i++) {
-			int index = (int) (str.length() * Math.random());
-			s.append(str.charAt(index));
+			int index = (int) (alfaB.length() * Math.random());
+			s.append(alfaB.charAt(index));
 		}
 		return s.toString();
 	}

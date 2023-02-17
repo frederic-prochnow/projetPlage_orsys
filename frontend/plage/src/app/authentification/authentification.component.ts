@@ -11,13 +11,6 @@ export class AuthentificationComponent implements OnInit {
 
   constructor(private authService: AuthService) { }
 
-  /*firebaseConfig = {
-    //...
-  };
-  app = initializeApp(this.firebaseConfig);
-  db = getFirestore(this.app);
-  auth = getAuth(this.app);*/
-
   model = new Utilisateur(0, '', '', '', '');
 
   type = "";

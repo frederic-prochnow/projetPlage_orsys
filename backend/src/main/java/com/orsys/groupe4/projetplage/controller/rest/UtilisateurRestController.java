@@ -14,16 +14,18 @@ import com.orsys.groupe4.projetplage.service.ConcessionnaireService;
 import com.orsys.groupe4.projetplage.service.LocataireService;
 import com.orsys.groupe4.projetplage.service.UtilisateurService;
 
-import lombok.AllArgsConstructor;
+import java.util.logging.Logger;
 
 @RestController
 @RequestMapping("/api/")
 @CrossOrigin(origins = "http://localhost:4200")
-public class UtilisateurRestController {
+public class UtilisateurRestController{
 
 	private UtilisateurService service;
 	private LocataireService serviceLoc;
 	private ConcessionnaireService serviceCons;
+
+	private static final Logger LOG = Logger.getLogger( UtilisateurRestController.class.getName());
 
 	public UtilisateurRestController(UtilisateurService service, LocataireService serviceLoc,
 			ConcessionnaireService serviceCons) {
