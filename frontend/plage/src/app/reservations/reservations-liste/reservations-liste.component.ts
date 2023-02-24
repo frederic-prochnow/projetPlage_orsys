@@ -1,5 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import {MatTableDataSource} from '@angular/material/table';
+import { async } from 'rxjs';
 import { Location } from '../../models/location';
 
 @Component({
@@ -7,14 +8,18 @@ import { Location } from '../../models/location';
   templateUrl: './reservations-liste.component.html',
   styleUrls: ['./reservations-liste.component.css']
 })
-export class ReservationsListeComponent {
+export class ReservationsListeComponent implements OnInit{
 
-  @Input()
-  dataSource : MatTableDataSource<Location> | any;
+  @Input()  data: Location[] = [];
+  dataSource = new  MatTableDataSource<Location>();
 
   displayedColumns: string[] = ['#', 'Debut', 'Fin', 'Montant', 'Statut', 'Details'];
 
   cardDetailsVisible = false;
+
+  async ngOnInit() {
+    this.dataSource = new MatTableDataSource<Location>(this.data);
+  }
 
   clickDetail() {
     this.cardDetailsVisible = !this.cardDetailsVisible;

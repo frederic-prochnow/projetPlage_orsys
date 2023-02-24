@@ -25,4 +25,8 @@ public abstract class Utilisateur {
     
     protected String email;
     
+    protected int idMdp;
+    
+    protected int idSel;
+    
 }

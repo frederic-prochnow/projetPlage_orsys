@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../services/auth.service';
 import { Utilisateur } from '../models/utilisateur';
+import { FormControl, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-authentification',
@@ -9,7 +11,7 @@ import { Utilisateur } from '../models/utilisateur';
 })
 export class AuthentificationComponent implements OnInit {
 
-  constructor(private authService: AuthService) { }
+  constructor(private authService: AuthService, private router: Router) { }
 
   model = new Utilisateur(0, '', '', '', '');
 
@@ -19,11 +21,19 @@ export class AuthentificationComponent implements OnInit {
   message: string | null = "";
   message_erreur: string | null = "";
 
+  emailValue = new FormControl('', [Validators.required, Validators.email]);
+  motDePasseValue = new FormControl('', [Validators.required, Validators.minLength(5)]);
+  hide = true;
+
   ngOnInit(): void {
     this.message = sessionStorage.getItem("message");
     this.message_erreur = sessionStorage.getItem("message_erreur");
     sessionStorage.removeItem("message");
     sessionStorage.removeItem("message_erreur");
+  }
+
+  inscription(){
+    this.type='Inscription';
   }
 
   authentification() {
@@ -47,14 +57,14 @@ export class AuthentificationComponent implements OnInit {
                       if (response) {
                         this.type = "Cons";
                         sessionStorage.setItem("idCons", "" + id);
-                        window.location.reload();
+                        this.router.navigate(['/concessionnaire']);
                       } else {
                         this.authService.estLocataire(this.model.email).subscribe({
                           next: (response) => {
                             if (response) {
                               this.type = "Loc";
                               sessionStorage.setItem("idLoc", "" + id);
-                              window.location.reload();
+                              this.router.navigate(['/locataire']);
                             }
                           }
                         });
@@ -70,6 +80,20 @@ export class AuthentificationComponent implements OnInit {
         }
       });
     }
+  }
+
+  getErrorMessage() {
+    let messageErreur;
+    if (this.emailValue.hasError('required')){
+      messageErreur = 'Vous devez entrer une valeur!';
+    } else if (this.emailValue.hasError('email')) {
+      messageErreur = 'Ceci n\'est pas une adresse email valide!';
+    } else if (this.motDePasseValue.hasError('required')) {
+      messageErreur = '5 caractères minimum!';
+    }else {
+      messageErreur = '';
+    }
+    return messageErreur;
   }
 
 }

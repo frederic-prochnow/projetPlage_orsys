@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { MatTableDataSource } from '@angular/material/table';
 import { LocationService } from '../../services/location.service';
+import { Location } from './../../models/location';
 
 @Component({
   selector: 'app-reservations-locataire',
@@ -9,14 +9,14 @@ import { LocationService } from '../../services/location.service';
 })
 export class ReservationsLocataireComponent implements OnInit {
 
-  dataSource : MatTableDataSource<Location> | any;
+  dataSource : Location[] = [];
 
   constructor(private locServ: LocationService) { }
 
   ngOnInit(): void {
     this.locServ.locationLocataire().subscribe({
       next: (response) => {
-        this.dataSource = new MatTableDataSource(response);
+        this.dataSource = response;
       }
     });
   }

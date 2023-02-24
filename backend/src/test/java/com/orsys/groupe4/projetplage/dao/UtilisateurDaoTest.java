@@ -17,10 +17,9 @@ class UtilisateurDaoTest {
     @Autowired
     UtilisateurDao dao;
     
-    private final String mail = "toto@titi.fr";
-    
     @Test
     void testGetId() {
+        String mail = "toto@titi.fr";
         int res = dao.getId(mail);
         assertThat(res == 2);
     }

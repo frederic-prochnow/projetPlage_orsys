@@ -8,6 +8,7 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.Scope;
 import org.springframework.scheduling.annotation.EnableScheduling;
 
+import java.util.logging.Level;
 import java.util.logging.Logger;
 
 
@@ -29,7 +30,8 @@ public class ProjetPlageApplication {
             String[] noms = applicationContext.getBeanDefinitionNames();
             
             for (String nom : noms) {
-                logger.info(nom + " : " + applicationContext.getBean(nom).getClass().getSimpleName());
+                String message = nom + " : " + applicationContext.getBean(nom).getClass().getSimpleName();
+                logger.log(Level.INFO, message);
             }
         };
     }

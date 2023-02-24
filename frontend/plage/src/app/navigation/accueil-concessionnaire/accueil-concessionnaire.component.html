@@ -1,4 +1,5 @@
 <div *ngIf="idCons">
+  <app-nav-concessionnaire></app-nav-concessionnaire>
   <app-calendrier></app-calendrier>
   <br />
   <mat-tab-group>
@@ -9,4 +10,7 @@
       <app-reservations-total></app-reservations-total>
     </mat-tab>
   </mat-tab-group>
+</div>
+<div *ngIf="afficherRefus">
+  <img src="https://sospc.name/wp-content/uploads/2017/05/Bloquer-lacc%C3%A8s-%C3%A0-un-ou-plusieurs-Sites-Web-sans-installer-de-logiciel-d%C3%A9di%C3%A9-sospc.name-19.jpg"/>
 </div>

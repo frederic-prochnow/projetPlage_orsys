@@ -21,6 +21,7 @@ import { AccueilConcessionnaireComponent } from './navigation/accueil-concession
 import { ReservationsLocataireComponent } from './reservations/reservations-locataire/reservations-locataire.component';
 import { AjouterReservationComponent } from './ajouter-reservation/ajouter-reservation.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatInputModule } from '@angular/material/input';
 import { OpenCloseComponent } from './open-close/open-close.component';
 
 import {MatProgressBarModule} from '@angular/material/progress-bar';
@@ -32,6 +33,10 @@ import {MatCardModule} from '@angular/material/card';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatTableModule} from '@angular/material/table';
 import {MatDialogModule} from '@angular/material/dialog';
+import { NavInscriptionComponent } from './navbar/nav-inscription/nav-inscription.component';
+import { InscriptionComponent } from './navigation/inscription/inscription.component';
+import { AppRoutingModule } from './app-routing.module';
+import { AccueilAuthentificationComponent } from './navigation/accueil-authentification/accueil-authentification.component';
 
 
 @NgModule({
@@ -50,7 +55,10 @@ import {MatDialogModule} from '@angular/material/dialog';
     AccueilConcessionnaireComponent,
     ReservationsLocataireComponent,
     AjouterReservationComponent,
-    OpenCloseComponent
+    OpenCloseComponent,
+    NavInscriptionComponent,
+    InscriptionComponent,
+    AccueilAuthentificationComponent
   ],
   imports: [
     BrowserModule,
@@ -66,9 +74,11 @@ import {MatDialogModule} from '@angular/material/dialog';
     MatTabsModule,
     MatCardModule,
     MatFormFieldModule,
+    MatInputModule,
     MatTableModule,
     MatDialogModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    AppRoutingModule
   ],
   providers: [AuthService],
   bootstrap: [AppComponent]

@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-nav-locataire',
@@ -7,9 +8,11 @@ import { Component } from '@angular/core';
 })
 export class NavLocataireComponent {
 
+  constructor(private router: Router) {}
+
   deconnection() {
     sessionStorage.removeItem("idLoc");
     sessionStorage.setItem("message","Deconnexion de l'espace locataire réussi !");
-    window.location.reload();
+    this.router.navigate(['/']);
   }
 }

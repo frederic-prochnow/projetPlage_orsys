@@ -5,7 +5,11 @@
 <div
   id="cardAll"
   *ngIf="
-    !(type == 'Cons') && !(type == 'Loc') && idCons == null && idLoc == null
+    !(type == 'Cons') &&
+    !(type == 'Loc') &&
+    !(type == 'Inscription') &&
+    idCons == null &&
+    idLoc == null
   "
 >
   <div id="cardAuth" class="card border-secondary mb-3">
@@ -42,6 +46,40 @@
         <div class="alert alert-danger" *ngIf="type == 'NO'">
           Erreur dans le mot de passe et/ou login
         </div>
+        <br />
+
+
+        <mat-form-field appearance="fill">
+          <mat-label>Entrez votre email</mat-label>
+          <input
+            matInput
+            placeholder="toto@corporation.com"
+            [formControl]="emailValue"
+            required
+          />
+          <mat-error *ngIf="emailValue.invalid">{{ getErrorMessage() }}</mat-error>
+        </mat-form-field>
+        <br />
+        <mat-form-field appearance="fill">
+          <mat-label>Enter your password</mat-label>
+          <input
+            matInput
+            [type]="hide ? 'password' : 'text'"
+            [formControl]="motDePasseValue"
+            required
+          />
+          <button
+            mat-icon-button
+            matSuffix
+            (click)="hide = !hide"
+            [attr.aria-label]="'Hide password'"
+            [attr.aria-pressed]="hide"
+          >
+            <mat-icon>{{ hide ? "visibility_off" : "visibility" }}</mat-icon>
+          </button>
+          <mat-error *ngIf="motDePasseValue.invalid">{{ getErrorMessage() }}</mat-error>
+        </mat-form-field>
+        <br />
         <button
           type="button"
           class="btn btn-primary"
@@ -49,13 +87,11 @@
         >
           Connection
         </button>
+        <br /><br />
+        <button type="button" class="btn btn-primary" routerLink="/inscription">
+          Inscrivez-vous
+        </button>
       </form>
     </div>
   </div>
-</div>
-<div *ngIf="type == 'Cons' || idCons != null">
-  <app-nav-concessionnaire></app-nav-concessionnaire>
-</div>
-<div *ngIf="type == 'Loc' || idLoc != null">
-  <app-nav-locataire></app-nav-locataire>
 </div>
