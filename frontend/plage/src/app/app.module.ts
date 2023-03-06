@@ -1,42 +1,48 @@
-import { NgModule, Component, HostBinding } from '@angular/core';
-import { BrowserModule } from '@angular/platform-browser';
-import { AppComponent } from './app.component';
-
-import { AuthentificationComponent } from './authentification/authentification.component';
 import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { AuthService } from './services/auth.service';
 import { HttpClientModule } from '@angular/common/http';
-import { NavLocataireComponent } from './navbar/nav-locataire/nav-locataire.component';
-import { NavConcessionnaireComponent } from './navbar/nav-concessionnaire/nav-concessionnaire.component';
-import { CalendrierComponent } from './calendrier/calendrier.component';
-import { DispositionComponent } from './calendrier/disposition/disposition.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-import { ReservationsATraiterComponent } from './reservations/reservations-atraiter/reservations-atraiter.component';
-import { ReservationsDetailsComponent } from './reservations/reservations-details/reservations-details.component';
-import { ReservationsListeComponent } from './reservations/reservations-liste/reservations-liste.component';
-import { ReservationsTotalComponent } from './reservations/reservations-total/reservations-total.component';
-import { AccueilLocataireComponent } from './navigation/accueil-locataire/accueil-locataire.component';
-import { AccueilConcessionnaireComponent } from './navigation/accueil-concessionnaire/accueil-concessionnaire.component';
-import { ReservationsLocataireComponent } from './reservations/reservations-locataire/reservations-locataire.component';
-import { AjouterReservationComponent } from './ajouter-reservation/ajouter-reservation.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatInputModule } from '@angular/material/input';
-import { OpenCloseComponent } from './open-close/open-close.component';
-
-import {MatProgressBarModule} from '@angular/material/progress-bar';
+import { MatAutocompleteModule } from '@angular/material/autocomplete';
+import { MatCheckboxModule } from '@angular/material/checkbox';
+import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { PlatformModule } from '@angular/cdk/platform';
-import {MatToolbarModule} from '@angular/material/toolbar';
-import {MatIconModule} from '@angular/material/icon';
-import {MatTabsModule} from '@angular/material/tabs';
-import {MatCardModule} from '@angular/material/card';
-import {MatFormFieldModule} from '@angular/material/form-field';
-import {MatTableModule} from '@angular/material/table';
-import {MatDialogModule} from '@angular/material/dialog';
-import { NavInscriptionComponent } from './navbar/nav-inscription/nav-inscription.component';
-import { InscriptionComponent } from './navigation/inscription/inscription.component';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatIconModule } from '@angular/material/icon';
+import { MatTabsModule } from '@angular/material/tabs';
+import { MatExpansionModule } from '@angular/material/expansion';
+import { MatCardModule } from '@angular/material/card';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatTableModule } from '@angular/material/table';
+import { MatDialogModule } from '@angular/material/dialog';
 import { AppRoutingModule } from './app-routing.module';
+
 import { AccueilAuthentificationComponent } from './navigation/accueil-authentification/accueil-authentification.component';
+import { AuthentificationComponent } from './core/authentification/authentification.component';
+import { CalendrierComponent } from './core/calendrier/calendrier.component';
+import { AjouterReservationComponent } from './core/reservations/ajouter-reservation/ajouter-reservation.component';
+import { ReservationsATraiterComponent } from './core/reservations/reservations-atraiter/reservations-atraiter.component';
+import { ReservationsDetailsComponent } from './core/reservations/reservations-details/reservations-details.component';
+import { ReservationsListeComponent } from './core/reservations/reservations-liste/reservations-liste.component';
+import { ReservationsLocataireComponent } from './core/reservations/reservations-locataire/reservations-locataire.component';
+import { ReservationsTotalComponent } from './core/reservations/reservations-total/reservations-total.component';
+import { OpenCloseComponent } from './core/open-close/open-close.component';
+import { NgModule } from '@angular/core';
+import { BrowserModule } from '@angular/platform-browser';
+import { AccueilConcessionnaireComponent } from './navigation/accueil-concessionnaire/accueil-concessionnaire.component';
+import { AccueilLocataireComponent } from './navigation/accueil-locataire/accueil-locataire.component';
+import { InscriptionComponent } from './navigation/inscription/inscription.component';
+import { AuthService } from './services/auth.service';
+import { NavConcessionnaireComponent } from './navbar/nav-concessionnaire/nav-concessionnaire.component';
+import { NavLocataireComponent } from './navbar/nav-locataire/nav-locataire.component';
+import { NavInscriptionComponent } from './navbar/nav-inscription/nav-inscription.component';
+import { AppComponent } from './app.component';
+import { NouveauLocataireComponent } from './core/locataire/nouveau-locataire/nouveau-locataire.component';
+import { DispositionComponent } from './core/calendrier/disposition/disposition.component';
+import { LocataireValiderComponent } from './core/locataire/locataire-valider/locataire-valider.component';
+import { LocataireListeComponent } from './core/locataire/locataire-liste/locataire-liste.component';
+
 
 
 @NgModule({
@@ -58,10 +64,13 @@ import { AccueilAuthentificationComponent } from './navigation/accueil-authentif
     OpenCloseComponent,
     NavInscriptionComponent,
     InscriptionComponent,
-    AccueilAuthentificationComponent
+    AccueilAuthentificationComponent,
+    NouveauLocataireComponent,
+    LocataireValiderComponent,
+    LocataireListeComponent
   ],
   imports: [
-    BrowserModule,
+  BrowserModule,
     CommonModule,
     FormsModule,
     HttpClientModule,
@@ -76,9 +85,12 @@ import { AccueilAuthentificationComponent } from './navigation/accueil-authentif
     MatFormFieldModule,
     MatInputModule,
     MatTableModule,
+    MatExpansionModule,
     MatDialogModule,
     ReactiveFormsModule,
-    AppRoutingModule
+    AppRoutingModule,
+    MatCheckboxModule,
+    MatAutocompleteModule
   ],
   providers: [AuthService],
   bootstrap: [AppComponent]

@@ -8,6 +8,33 @@ import { Utilisateur } from '../models/utilisateur';
 export class AuthService {
   link = 'http://localhost:8080/api/utilisateur/';
 
+  private tokenCons!: number;
+  private tokenLoc!: number;
+
+  loginCons(id: number) {
+    this.tokenCons = id;
+  }
+
+  logoutCons() {
+    this.tokenCons = -1;
+  }
+
+  loginLoc(id: number) {
+    this.tokenLoc = id;
+  }
+
+  logoutLoc() {
+    this.tokenLoc = -1;
+  }
+
+  getTokenCons(): number {
+    return this.tokenCons;
+  }
+
+  getTokenLoc(): number {
+    return this.tokenLoc;
+  }
+
   constructor(private http: HttpClient) {}
 
   emailExiste(email: string){

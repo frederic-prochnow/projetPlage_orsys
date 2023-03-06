@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
+import { AuthService } from '../../services/auth.service';
 
 @Component({
   selector: 'app-nav-locataire',
@@ -8,11 +9,12 @@ import { Router } from '@angular/router';
 })
 export class NavLocataireComponent {
 
-  constructor(private router: Router) {}
+  constructor(private router: Router, private authService: AuthService) {}
 
   deconnection() {
-    sessionStorage.removeItem("idLoc");
+    this.authService.logoutLoc();
     sessionStorage.setItem("message","Deconnexion de l'espace locataire réussi !");
-    this.router.navigate(['/']);
+    //this.router.navigateByUrl('/accueil');
+    window.location.reload();
   }
 }

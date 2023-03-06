@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
+import { AuthService } from './../../services/auth.service';
 
 @Component({
   selector: 'popup-deconnexion',
@@ -15,13 +16,14 @@ export class PopupDeconnexionComponent {}
 })
 export class NavConcessionnaireComponent {
 
-  constructor(public dialog: MatDialog, private router: Router) {}
+  constructor(public dialog: MatDialog, private router: Router, private authService: AuthService) {}
 
   async deconnection() {
-    sessionStorage.removeItem("idCons");
+    this.authService.logoutCons();
     this.dialog.open(PopupDeconnexionComponent);
     await new Promise(f => setTimeout(f, 1000));
     this.dialog.closeAll();
-    this.router.navigate(['/']);
+    //this.router.navigateByUrl('/accueil');
+    window.location.reload();
   }
 }

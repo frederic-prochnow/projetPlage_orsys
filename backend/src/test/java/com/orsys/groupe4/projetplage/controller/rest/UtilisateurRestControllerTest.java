@@ -1,5 +1,6 @@
 package com.orsys.groupe4.projetplage.controller.rest;
 
+import com.orsys.groupe4.projetplage.mapper.UtilisateurMapper;
 import com.orsys.groupe4.projetplage.service.ConcessionnaireService;
 import com.orsys.groupe4.projetplage.service.LocataireService;
 import com.orsys.groupe4.projetplage.service.UtilisateurService;
@@ -23,6 +24,9 @@ class UtilisateurRestControllerTest {
     
     @MockBean
     UtilisateurService service;
+    
+    @MockBean
+    UtilisateurMapper mapper;
     
     @MockBean
     LocataireService locService;

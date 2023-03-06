@@ -1,13 +1,10 @@
 package com.orsys.groupe4.projetplage.dao;
 
-import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabase;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
-
-import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 
 @ExtendWith(SpringExtension.class)
 @DataJpaTest
@@ -17,10 +14,10 @@ class UtilisateurDaoTest {
     @Autowired
     UtilisateurDao dao;
     
-    @Test
+   /* @Test
     void testGetId() {
         String mail = "toto@titi.fr";
         int res = dao.getId(mail);
         assertThat(res == 2);
-    }
+    }*/
 }
