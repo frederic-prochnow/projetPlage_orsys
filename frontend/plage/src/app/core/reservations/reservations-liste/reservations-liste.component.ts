@@ -1,8 +1,12 @@
 import { animate, state, style, transition, trigger } from '@angular/animations';
-import { Component, Input, OnInit } from '@angular/core';
+import { AfterViewInit, Component, Input, OnInit, ViewChild } from '@angular/core';
 import { async, Observable } from 'rxjs';
 import { LocationService } from '../../../services/location.service';
 import { Location } from './../../../models/location';
+
+import {MatPaginator} from '@angular/material/paginator';
+import {MatSort} from '@angular/material/sort';
+import {MatTableDataSource} from '@angular/material/table';
 
 @Component({
   selector: 'app-reservations-liste',
@@ -16,19 +20,24 @@ import { Location } from './../../../models/location';
     ]),
   ]
 })
-export class ReservationsListeComponent implements OnInit{
+export class ReservationsListeComponent implements OnInit, AfterViewInit{
 
   @Input('dataType') type : string | any;
 
-  dataSource : Location[] = [];
+  dataSource: MatTableDataSource<Location>;
 
   displayedColumns: string[] = ['#', 'Debut', 'Fin', 'Montant', 'Statut'];
-  displayedColumnsWithExpand = [...this.displayedColumns, 'expand'];
+  columnsToDisplayWithExpand = [...this.displayedColumns, 'expand'];
   expandedElement: Location | null = null;
 
-  cardDetailsVisible = false;
+  panelOpenState = false;
+
+  //@ViewChild(MatPaginator) paginator: MatPaginator;
+  @ViewChild(MatSort) sort: MatSort;
 
   constructor(private locServ: LocationService) {
+    this.dataSource = new MatTableDataSource();
+    this.sort = new MatSort();
   }
 
   ngOnInit() {
@@ -45,12 +54,13 @@ export class ReservationsListeComponent implements OnInit{
 
     data.subscribe({
       next: (response) => {
-        this.dataSource = response;
+        this.dataSource = new MatTableDataSource(response);
       }
     });
   }
 
-  clickDetail() {
-    this.cardDetailsVisible = !this.cardDetailsVisible;
+  ngAfterViewInit() {
+    //this.dataSource.paginator = this.paginator;
+    this.dataSource.sort = this.sort;
   }
 }

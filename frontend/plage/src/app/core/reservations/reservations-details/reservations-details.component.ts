@@ -2,6 +2,7 @@ import { Component, Input } from '@angular/core';
 import { AuthService } from '../../../services/auth.service';
 import { LocationService } from '../../../services/location.service';
 import { Location } from './../../../models/location';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -11,7 +12,7 @@ import { Location } from './../../../models/location';
 })
 export class ReservationsDetailsComponent {
 
-  constructor(private locService: LocationService, private authService: AuthService) { }
+  constructor(private locService: LocationService, private authService: AuthService, private router: Router) { }
 
   idLoc = this.authService.getTokenLoc();
 
@@ -24,7 +25,7 @@ export class ReservationsDetailsComponent {
         if (response) {
           let res = "Validation de la location numéro " + id + " réussi !";
           sessionStorage.setItem("message", res);
-          window.location.reload();
+          this.router.navigateByUrl('/concessionnaire');
         } else {
           let res = "Validation de la location numéro " + id + " en échec !";
           sessionStorage.setItem("message_erreur", res);
@@ -39,7 +40,7 @@ export class ReservationsDetailsComponent {
         if (response) {
           let res = "Annulation de la location numéro " + id + " réussi !";
           sessionStorage.setItem("message", res);
-          window.location.reload();
+          this.router.navigateByUrl('/concessionnaire');
         } else {
           let res = "Annulation de la location numéro " + id + " en échec !";
           sessionStorage.setItem("message_erreur", res);

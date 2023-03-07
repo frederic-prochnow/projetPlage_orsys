@@ -17,6 +17,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatTableModule } from '@angular/material/table';
 import { MatDialogModule } from '@angular/material/dialog';
 import { AppRoutingModule } from './app-routing.module';
+import {MatPaginatorModule} from '@angular/material/paginator';
 
 import { AccueilAuthentificationComponent } from './navigation/accueil-authentification/accueil-authentification.component';
 import { AuthentificationComponent } from './core/authentification/authentification.component';
@@ -90,7 +91,8 @@ import { LocataireListeComponent } from './core/locataire/locataire-liste/locata
     ReactiveFormsModule,
     AppRoutingModule,
     MatCheckboxModule,
-    MatAutocompleteModule
+    MatAutocompleteModule,
+    MatPaginatorModule
   ],
   providers: [AuthService],
   bootstrap: [AppComponent]

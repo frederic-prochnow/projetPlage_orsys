@@ -3,6 +3,7 @@ import { Parasol } from '../../../models/parasol';
 import { FileService } from '../../../services/file.service';
 import { LocationService } from '../../../services/location.service';
 import { File } from './../../../models/file';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-ajouter-reservation',
@@ -11,7 +12,7 @@ import { File } from './../../../models/file';
 })
 export class AjouterReservationComponent {
 
-  constructor(private locServ: LocationService, private fileServ: FileService){}
+  constructor(private locServ: LocationService, private fileServ: FileService, private router: Router){}
 
   @Input() tabParasolsNonChoisisables !: Parasol[];
   @Input() dateLocation !: string;
@@ -81,7 +82,7 @@ export class AjouterReservationComponent {
             alert("Il y a eu un problème de l'enregistrement des parasols, réessayez");
           }else {
             alert("Location rajouter avec succès");
-            window.location.reload();
+            this.router.navigateByUrl('/locataire');
           }
         }
       }
