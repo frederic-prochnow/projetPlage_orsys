@@ -6,6 +6,8 @@ import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 
+import java.util.Optional;
+
 public interface UtilisateurDao extends JpaRepository<Utilisateur, Long> {
     
     @Query(nativeQuery = true, value = "SELECT u.id FROM Utilisateur u WHERE u.email=:email")
@@ -37,4 +39,6 @@ public interface UtilisateurDao extends JpaRepository<Utilisateur, Long> {
     @Modifying
     @Query(nativeQuery = true, value = "insert into utilisateur (id,email,nom,prenom,id_sel,id_mdp) values (:id, :email, :nom, :prenom, :id, :id)")
     int creerUtilisateur(@Param("id") Long id, @Param("email") String email, @Param("nom") String nom, @Param("prenom") String prenom);
+    
+    Optional<Utilisateur> findByEmail(String email);
 }

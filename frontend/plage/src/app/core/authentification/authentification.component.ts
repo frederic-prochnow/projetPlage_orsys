@@ -19,8 +19,8 @@ export class AuthentificationComponent implements OnInit {
   message: string | null = "";
   message_erreur: string | null = "";
 
-  emailValue = new FormControl('', [Validators.required, Validators.email]);
-  motDePasseValue = new FormControl('', [Validators.required, Validators.minLength(5)]);
+  email = new FormControl('', [Validators.required, Validators.email]);
+  motDePasse = new FormControl('', [Validators.required, Validators.minLength(5)]);
   hide = true;
 
   ngOnInit(): void {
@@ -53,13 +53,15 @@ export class AuthentificationComponent implements OnInit {
           let id = 0;
           this.authService.seConnecter(this.model).subscribe({
             next: (response) => {
-              if (response) {
+              console.log(response);
+              if (response != -1) {
                 id = response;
                 this.authService.estConcessionnaire(email).subscribe({
                   next: (response) => {
                     if (response) {
                       this.type = "Cons";
                       this.authService.loginCons(id);
+                      console.log("ok");
                       this.router.navigateByUrl('/concessionnaire');
                     } else {
                       this.authService.estLocataire(email).subscribe({
@@ -86,11 +88,11 @@ export class AuthentificationComponent implements OnInit {
 
   getErrorMessage() {
     let messageErreur;
-    if (this.emailValue.hasError('required')) {
+    if (this.email.hasError('required')) {
       messageErreur = 'Vous devez entrer une valeur!';
-    } else if (this.emailValue.hasError('email')) {
+    } else if (this.email.hasError('email')) {
       messageErreur = 'Ceci n\'est pas une adresse email valide!';
-    } else if (this.motDePasseValue.hasError('required')) {
+    } else if (this.motDePasse.hasError('required')) {
       messageErreur = '5 caractères minimum!';
     } else {
       messageErreur = '';

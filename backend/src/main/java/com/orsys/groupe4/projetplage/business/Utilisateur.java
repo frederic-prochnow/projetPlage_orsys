@@ -4,6 +4,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
+import org.springframework.security.core.userdetails.UserDetails;
 
 import javax.persistence.*;
 
@@ -13,7 +14,7 @@ import javax.persistence.*;
 @NoArgsConstructor
 @ToString
 @Inheritance(strategy = InheritanceType.JOINED)
-public abstract class Utilisateur {
+public abstract class Utilisateur implements UserDetails {
     
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

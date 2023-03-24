@@ -13,6 +13,50 @@
   <div id="cardAuth" class="card border-secondary mb-3">
     <div class="card-header">Connectez-vous !</div>
     <div class="card-body text-secondary">
+      <!--<form (ngSubmit)="authentification()" class="form">
+        <mat-form-field class="emailMDP" appearance="fill">
+          <mat-label>Email</mat-label>
+          <input matInput type="email" placeholder="Entrer votre email" [formControl]="email" required />
+          <mat-error *ngIf="type == 'NO-EMAIL' || email.invalid">{{getErrorMessage()}}</mat-error>
+        </mat-form-field>
+        <br/>
+        <mat-form-field class="mdp" appearance="fill">
+          <mat-label>Mot de passe</mat-label>
+          <input
+            matInput
+            [type]="hide ? 'password' : 'text'"
+            [formControl]="motDePasse"
+            required
+          />
+          <button
+            mat-icon-button
+            matSuffix
+            (click)="hide = !hide"
+            [attr.aria-label]="'Hide password'"
+            [attr.aria-pressed]="hide"
+          >
+            <mat-icon>{{ hide ? "visibility_off" : "visibility" }}</mat-icon>
+          </button>
+          <mat-error *ngIf="motDePasse.invalid">{{
+            getErrorMessage()
+          }}</mat-error>
+        </mat-form-field>
+        <br/>
+        <div class="alert alert-danger" *ngIf="type == 'NO'">
+          Erreur dans le couple mot de passe / login<br/>
+        </div>
+        <button
+      type="button"
+      class="btn btn-primary"
+      type="submit"
+    >
+      Connection
+    </button>
+      </form>
+      <br />
+        <button type="button" class="btn btn-primary" routerLink="/inscription">
+          Inscrivez-vous
+        </button>-->
       <form #authForm="ngForm">
         <div class="form-group">
           <label for="inputEmail">Email</label>
@@ -28,6 +72,9 @@
             #email="ngModel"
           />
         </div>
+        <div class="alert alert-danger" *ngIf="type == 'NO-EMAIL'">
+          Email invalide!
+        </div>
         <div class="form-group">
           <label for="inputMDP">Mot de passe</label>
           <input
@@ -41,42 +88,11 @@
             #mdp="ngModel"
           />
         </div>
+        <br/>
         <div class="alert alert-danger" *ngIf="type == 'NO'">
-          Erreur dans le mot de passe et/ou login
+          Erreur dans le couple mot de passe / login
         </div>
         <br />
-
-        <!--
-        <mat-form-field appearance="fill">
-          <mat-label>Entrez votre email</mat-label>
-          <input
-            matInput
-            placeholder="toto@corporation.com"
-            [formControl]="emailValue"
-            required
-          />
-          <mat-error *ngIf="emailValue.invalid">{{ getErrorMessage() }}</mat-error>
-        </mat-form-field>
-        <br />
-        <mat-form-field appearance="fill">
-          <mat-label>Enter your password</mat-label>
-          <input
-            matInput
-            [type]="hide ? 'password' : 'text'"
-            [formControl]="motDePasseValue"
-            required
-          />
-          <button
-            mat-icon-button
-            matSuffix
-            (click)="hide = !hide"
-            [attr.aria-label]="'Hide password'"
-            [attr.aria-pressed]="hide"
-          >
-            <mat-icon>{{ hide ? "visibility_off" : "visibility" }}</mat-icon>
-          </button>
-          <mat-error *ngIf="motDePasseValue.invalid">{{ getErrorMessage() }}</mat-error>
-        </mat-form-field>-->
         <br />
         <button
           type="button"
@@ -85,11 +101,11 @@
         >
           Connection
         </button>
-        <br /><br />
+      </form>
+      <br />
         <button type="button" class="btn btn-primary" routerLink="/inscription">
           Inscrivez-vous
         </button>
-      </form>
     </div>
   </div>
 </div>

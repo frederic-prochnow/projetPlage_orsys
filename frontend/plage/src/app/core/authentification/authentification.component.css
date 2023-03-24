@@ -15,3 +15,7 @@ body{
     background-image: url("src/assets/plage.jpg");
     background-position:  center;
 }
+
+.emailMDP {
+    width: auto;
+}
