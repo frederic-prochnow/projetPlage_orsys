@@ -1,0 +1,133 @@
+<app-nav-inscription></app-nav-inscription>
+<div class="formulaire">
+  <form (ngSubmit)="onSubmit()" class="form">
+    <h2>Informations personnels</h2>
+    <mat-form-field class="nomPrenom" appearance="fill">
+      <mat-label>Nom</mat-label>
+      <input matInput [formControl]="nom" [(ngModel)]="model.nom" required />
+      <mat-error *ngIf="nom.invalid">{{
+        getErrorMessage2("required")
+      }}</mat-error>
+    </mat-form-field>
+    <mat-form-field class="nomPrenom" appearance="fill">
+      <mat-label>Prenom</mat-label>
+      <input
+        matInput
+        [formControl]="prenom"
+        [(ngModel)]="model.prenom"
+        required
+      />
+      <mat-error *ngIf="prenom.invalid">{{
+        getErrorMessage2("required")
+      }}</mat-error>
+    </mat-form-field>
+    <mat-form-field class="pays" appearance="fill">
+      <mat-label>Pays</mat-label>
+      <input type="text"
+             aria-label="Pays"
+             matInput
+             [formControl]="pays"
+             [matAutocomplete]="auto">
+      <mat-autocomplete #auto="matAutocomplete">
+        <mat-option *ngFor="let pays of filteredOptions | async" [value]="pays.nom">
+          {{pays.nom}}
+        </mat-option>
+      </mat-autocomplete>
+      <mat-error *ngIf="pays.invalid">{{
+        getErrorMessage2("required")
+      }}</mat-error>
+    </mat-form-field>
+    <p style="color: red;" *ngIf="erreurPays">
+      {{ getErrorMessage2("pays") }}
+    </p>
+    <br/>
+    <h2>Informations de connexion</h2>
+    <p>
+      Ne vous trompez pas ! Cette adresse email vous sert d'itenfiant pour vous
+      connecter ! <br />
+      Votre mot de passe doit faire au moins 5 caractères
+    </p>
+    <mat-form-field class="email" appearance="fill">
+      <mat-label>Email</mat-label>
+      <input
+        matInput
+        placeholder="toto@corporation.com"
+        [formControl]="email"
+        [(ngModel)]="model.email"
+        (change)="conditionEmailPossible()"
+        required
+      />
+      <mat-error *ngIf="email.invalid">{{
+        getErrorMessage2("email")
+      }}</mat-error>
+    </mat-form-field>
+    <br/>
+    <p style="color: red;" *ngIf="erreurEmail">
+      {{ getErrorMessage2("emailNonDispo") }}
+    </p>
+    <mat-form-field class="mdp" appearance="fill">
+      <mat-label>Mot de passe</mat-label>
+      <input
+        matInput
+        [type]="hide ? 'password' : 'text'"
+        [formControl]="motDePasse"
+        [(ngModel)]="model.motDePasse"
+        (change)="conditionErreurMdp()"
+        required
+      />
+      <button
+        mat-icon-button
+        matSuffix
+        (click)="hide = !hide"
+        [attr.aria-label]="'Hide password'"
+        [attr.aria-pressed]="hide"
+      >
+        <mat-icon>{{ hide ? "visibility_off" : "visibility" }}</mat-icon>
+      </button>
+      <mat-error *ngIf="motDePasse.invalid">{{
+        getErrorMessage2("mdp")
+      }}</mat-error>
+    </mat-form-field>
+    <mat-form-field class="mdp" appearance="fill">
+      <mat-label>Confirmer</mat-label>
+      <input
+        matInput
+        [type]="hide ? 'password' : 'text'"
+        [formControl]="motDePasse2"
+        (change)="conditionErreurMdp()"
+        required
+      />
+      <button
+        mat-icon-button
+        matSuffix
+        (click)="hide = !hide2"
+        [attr.aria-label]="'Hide password'"
+        [attr.aria-pressed]="hide2"
+      >
+        <mat-icon>{{ hide2 ? "visibility_off" : "visibility" }}</mat-icon>
+      </button>
+      <mat-error
+        *ngIf="motDePasse2.invalid || motDePasse2.value != motDePasse.value"
+        >{{ getErrorMessage2("mdp") }}</mat-error>
+    </mat-form-field>
+    <br/>
+    <p style="color: red;" *ngIf="erreurMDP">
+      {{ getErrorMessage2("mdpPasEgal") }}
+    </p>
+    <br />
+    <h2>Confirmation</h2>
+    <mat-checkbox [formControl]="confirmation"
+      >Je confirme que l'ensemble des informations sont exactes</mat-checkbox
+    >
+    <br />
+    <br />
+    <button
+      type="button"
+      class="btn btn-primary"
+      type="submit"
+      [disabled]="!validationPossible()"
+    >
+      Valider
+    </button>
+  </form>
+</div>

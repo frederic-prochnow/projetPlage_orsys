@@ -1,0 +1,113 @@
+
+
+
+<!DOCTYPE html>
+<html id="htmlId">
+<head>
+  <title>Coverage Report > LocationDao</title>
+  <style type="text/css">
+    @import "../../css/coverage.css";
+    @import "../../css/idea.min.css";
+  </style>
+  <script type="text/javascript" src="../../js/highlight.min.js"></script>
+  <script type="text/javascript" src="../../js/highlightjs-line-numbers.min.js"></script>
+</head>
+
+<body>
+<div class="content">
+<div class="breadCrumbs">
+Current scope:     <a href="../../index.html">all classes</a>
+    <span class="separator">|</span>
+    <a href="../index.html">com.orsys.groupe4.projetplage.dao</a>
+</div>
+
+<h1>Coverage Summary for Class: LocationDao (com.orsys.groupe4.projetplage.dao)</h1>
+
+<table class="coverageStats">
+<tr>
+  <th class="name">Class</th>
+</tr>
+<tr>
+  <td class="name">LocationDao</td>
+</tr>
+
+</table>
+
+<br/>
+<br/>
+
+
+<pre>
+<code class="sourceCode" id="sourceCode">&nbsp;package com.orsys.groupe4.projetplage.dao;
+&nbsp;
+&nbsp;import java.util.List;
+&nbsp;
+&nbsp;import org.springframework.data.jpa.repository.JpaRepository;
+&nbsp;import org.springframework.data.jpa.repository.Modifying;
+&nbsp;import org.springframework.data.jpa.repository.Query;
+&nbsp;import org.springframework.data.repository.query.Param;
+&nbsp;import org.springframework.data.rest.core.annotation.RepositoryRestResource;
+&nbsp;
+&nbsp;import com.orsys.groupe4.projetplage.business.Location;
+&nbsp;
+&nbsp;@RepositoryRestResource(exported = true)
+&nbsp;public interface LocationDao extends JpaRepository&lt;Location, Long&gt; {
+&nbsp;	
+&nbsp;	@Query(nativeQuery = true, value=&quot;Select * from Location l where l.concessionnaire_id=:idCons&quot;)
+&nbsp;	public List&lt;Location&gt; reservationByIdCons(@Param(&quot;idCons&quot;) Long idCons);
+&nbsp;	
+&nbsp;	@Query(nativeQuery = true, value=&quot;Select * from Location l where l.locataire_id =:idLoc&quot;)
+&nbsp;	public List&lt;Location&gt; reservationByIdLoc(@Param(&quot;idLoc&quot;)Long idLoc);
+&nbsp;	
+&nbsp;	@Query(nativeQuery = true, value=&quot;Select * from Location l where l.statut_id = (select id from statut where nom =&#39;ATraiter&#39;) and l.concessionnaire_id=:idCons&quot;)
+&nbsp;	public List&lt;Location&gt; reservationATraiterByIdCons(@Param(&quot;idCons&quot;) Long idCons);
+&nbsp;
+&nbsp;	@Modifying
+&nbsp;	@Query(nativeQuery = true, value=&quot;update Location set statut_id = (select id from statut where nom =&#39;Valider&#39;) where id = :idLoc &quot;)
+&nbsp;	public int valider(@Param(&quot;idLoc&quot;) Long idLocation);
+&nbsp;
+&nbsp;	@Modifying
+&nbsp;	@Query(nativeQuery = true, value=&quot;update Location set statut_id = (select id from statut where nom =&#39;Annuler&#39;) where id = :idLoc &quot;)
+&nbsp;	public int annuler(@Param(&quot;idLoc&quot;) Long idLocation);
+&nbsp;
+&nbsp;  	@Modifying
+&nbsp;	@Query(nativeQuery = true, value= &quot;insert into location (id,date_heure_debut,date_heure_fin, montantaregler_en_euros, remarques, concessionnaire_id, locataire_id, statut_id)&quot;
+&nbsp;				   					+ &quot;values (:id,to_timestamp(:date,&#39;YYYY-MM-DD&#39;),to_timestamp(:date,&#39;YYYY-MM-DD&#39;),:montant,:remarques,:idCons,:idLoc,(select id from statut where nom =&#39;ATraiter&#39;));&quot;)
+&nbsp;	public int ajouterReservation(@Param(&quot;id&quot;) int id, @Param(&quot;date&quot;) String date, @Param(&quot;idCons&quot;) int idCons, @Param(&quot;idLoc&quot;) int idLoc, @Param(&quot;remarques&quot;) String remarques, @Param(&quot;montant&quot;) int montant);
+&nbsp;
+&nbsp;	@Query(nativeQuery = true, value= &quot;select max(id) from location&quot;)
+&nbsp;	public Integer recupererId();
+&nbsp;
+&nbsp;	@Modifying
+&nbsp;	@Query(nativeQuery = true, value= &quot;insert into parasol_locations (parasols_id,locations_id)&quot;
+&nbsp;									+ &quot;values (:idPara, :idLoca);&quot;)
+&nbsp;	public int ajouterParasolsLocation(@Param(&quot;idPara&quot;) int idPara, @Param(&quot;idLoca&quot;) int idLoca);
+&nbsp;
+&nbsp;}
+</code>
+</pre>
+</div>
+
+<script type="text/javascript">
+(function() {
+    var msie = false, msie9 = false;
+    /*@cc_on
+      msie = true;
+      @if (@_jscript_version >= 9)
+        msie9 = true;
+      @end
+    @*/
+
+    if (!msie || msie && msie9) {
+      hljs.highlightAll()
+      hljs.initLineNumbersOnLoad();
+    }
+})();
+</script>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2023-02-23 16:50</div>
+</div>
+</body>
+</html>

@@ -1,12 +1,20 @@
-<div *ngIf="idCons">
-  <app-calendrier></app-calendrier>
-  <br />
-  <mat-tab-group>
-    <mat-tab label="Réservations à traiter">
-      <app-reservations-atraiter></app-reservations-atraiter>
-    </mat-tab>
-    <mat-tab label="Toutes les réservations">
-      <app-reservations-total></app-reservations-total>
-    </mat-tab>
-  </mat-tab-group>
-</div>
+<app-nav-concessionnaire></app-nav-concessionnaire>
+<app-calendrier></app-calendrier>
+<br />
+<mat-tab-group>
+  <mat-tab label="Réservations à traiter">
+    <app-reservations-atraiter></app-reservations-atraiter>
+  </mat-tab>
+  <mat-tab label="Toutes les réservations">
+    <app-reservations-total></app-reservations-total>
+  </mat-tab>
+</mat-tab-group>
+<br />
+<mat-tab-group>
+  <mat-tab label="Nouveaux locataire">
+    <app-nouveau-locataire></app-nouveau-locataire>
+  </mat-tab>
+  <mat-tab label="Locataire valider">
+    <app-locataire-valider></app-locataire-valider>
+  </mat-tab>
+</mat-tab-group>

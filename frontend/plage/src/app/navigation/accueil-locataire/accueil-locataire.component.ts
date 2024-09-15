@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-accueil-locataire',
@@ -6,6 +7,4 @@ import { Component } from '@angular/core';
   styleUrls: ['./accueil-locataire.component.css']
 })
 export class AccueilLocataireComponent {
-
-  idLoc = sessionStorage.getItem("idLoc");
 }

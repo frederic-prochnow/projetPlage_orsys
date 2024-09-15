@@ -1,4 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { AuthService } from './../../services/auth.service';
 
 @Component({
   selector: 'app-accueil-concessionnaire',
@@ -6,6 +8,4 @@ import { Component } from '@angular/core';
   styleUrls: ['./accueil-concessionnaire.component.css']
 })
 export class AccueilConcessionnaireComponent {
-
-  idCons = sessionStorage.getItem("idCons");
 }

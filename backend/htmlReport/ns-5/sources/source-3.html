@@ -1,0 +1,124 @@
+
+
+
+<!DOCTYPE html>
+<html id="htmlId">
+<head>
+  <title>Coverage Report > ParasolDao</title>
+  <style type="text/css">
+    @import "../../css/coverage.css";
+    @import "../../css/idea.min.css";
+  </style>
+  <script type="text/javascript" src="../../js/highlight.min.js"></script>
+  <script type="text/javascript" src="../../js/highlightjs-line-numbers.min.js"></script>
+</head>
+
+<body>
+<div class="content">
+<div class="breadCrumbs">
+Current scope:     <a href="../../index.html">all classes</a>
+    <span class="separator">|</span>
+    <a href="../index.html">com.orsys.groupe4.projetplage.dao</a>
+</div>
+
+<h1>Coverage Summary for Class: ParasolDao (com.orsys.groupe4.projetplage.dao)</h1>
+
+<table class="coverageStats">
+
+<tr>
+  <th class="name">Class</th>
+</tr>
+  <tr>
+    <td class="name">ParasolDao$MockitoMock$hMa61UiK</td>
+  </tr>
+  <tr>
+    <td class="name">ParasolDao$MockitoMock$hMa61UiK$auxiliary$FEniZqmC</td>
+  </tr>
+  <tr>
+    <td class="name">ParasolDao$MockitoMock$hMa61UiK$auxiliary$sZGC6EHU</td>
+  </tr>
+  <tr>
+    <td class="name">ParasolDao$MockitoMock$hMa61UiK$auxiliary$w9Z16lur</td>
+  </tr>
+<tr>
+  <td class="name"><strong>Total</strong></td>
+</tr>
+</table>
+
+<br/>
+<br/>
+
+
+<pre>
+<code class="sourceCode" id="sourceCode">&nbsp;package com.orsys.groupe4.projetplage.dao;
+&nbsp;
+&nbsp;import java.time.LocalDateTime;
+&nbsp;import java.util.List;
+&nbsp;
+&nbsp;import org.springframework.data.jpa.repository.JpaRepository;
+&nbsp;import org.springframework.data.jpa.repository.Query;
+&nbsp;import org.springframework.data.repository.query.Param;
+&nbsp;import org.springframework.data.rest.core.annotation.RepositoryRestResource;
+&nbsp;
+&nbsp;import com.orsys.groupe4.projetplage.business.File;
+&nbsp;import com.orsys.groupe4.projetplage.business.Parasol;
+&nbsp;
+&nbsp;@RepositoryRestResource(exported = true)
+&nbsp;public interface ParasolDao extends JpaRepository&lt;Parasol, Long&gt;{
+&nbsp;    Parasol findByNumEmplacement(byte numEmplacement);
+&nbsp;    Parasol findByNumEmplacementAndFile(byte numEmplacement, File file);
+&nbsp;
+&nbsp;    @Query(nativeQuery = true, value=
+&nbsp;    		&quot;select * &quot;
+&nbsp;    		+ &quot;from Parasol p &quot;
+&nbsp;    		+ &quot;where p.id in &quot;
+&nbsp;    		+ &quot;(select pl.parasols_id &quot;
+&nbsp;    		+ &quot;from Location l &quot;
+&nbsp;    		+ &quot;join Parasol_locations pl on l.id = pl.locations_id &quot;
+&nbsp;    		+ &quot;where l.concessionnaire_id = :idCons &quot;
+&nbsp;    		+ &quot;and l.statut_id = (select id from statut where nom =&#39;ATraiter&#39;) &quot;
+&nbsp;    		+ &quot;and :dateLoc &gt;= l.date_heure_debut &quot;
+&nbsp;    		+ &quot;and :dateLoc &lt;= l.date_heure_fin)&quot;)
+&nbsp;    List&lt;Parasol&gt; findParasolsByConcessionnaireATraiter(@Param(&quot;idCons&quot;) Long idCons,@Param(&quot;dateLoc&quot;) LocalDateTime date);
+&nbsp;    
+&nbsp;    @Query(nativeQuery = true, value=
+&nbsp;    		&quot;select * &quot;
+&nbsp;    		+ &quot;from Parasol p &quot;
+&nbsp;    		+ &quot;where p.id in &quot;
+&nbsp;    		+ &quot;(select pl.parasols_id &quot;
+&nbsp;    		+ &quot;from Location l &quot;
+&nbsp;    		+ &quot;join Parasol_locations pl on l.id = pl.locations_id &quot;
+&nbsp;    		+ &quot;where l.concessionnaire_id = :idCons &quot;
+&nbsp;    		+ &quot;and l.statut_id = (select id from statut where nom =&#39;Valider&#39;) &quot;
+&nbsp;    		+ &quot;and :dateLoc &gt;= l.date_heure_debut &quot;
+&nbsp;    		+ &quot;and :dateLoc &lt;= l.date_heure_fin)&quot;)
+&nbsp;    List&lt;Parasol&gt; findParasolsByConcessionnaireValider(@Param(&quot;idCons&quot;) Long idCons,@Param(&quot;dateLoc&quot;) LocalDateTime date);
+&nbsp;
+&nbsp;}
+</code>
+</pre>
+</div>
+
+<script type="text/javascript">
+(function() {
+    var msie = false, msie9 = false;
+    /*@cc_on
+      msie = true;
+      @if (@_jscript_version >= 9)
+        msie9 = true;
+      @end
+    @*/
+
+    if (!msie || msie && msie9) {
+      hljs.highlightAll()
+      hljs.initLineNumbersOnLoad();
+    }
+})();
+</script>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2023-02-23 16:50</div>
+</div>
+</body>
+</html>

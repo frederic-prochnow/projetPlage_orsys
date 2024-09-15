@@ -1,0 +1,103 @@
+
+
+
+<!DOCTYPE html>
+<html id="htmlId">
+<head>
+  <title>Coverage Report > UtilisateurDao</title>
+  <style type="text/css">
+    @import "../../css/coverage.css";
+    @import "../../css/idea.min.css";
+  </style>
+  <script type="text/javascript" src="../../js/highlight.min.js"></script>
+  <script type="text/javascript" src="../../js/highlightjs-line-numbers.min.js"></script>
+</head>
+
+<body>
+<div class="content">
+<div class="breadCrumbs">
+Current scope:     <a href="../../index.html">all classes</a>
+    <span class="separator">|</span>
+    <a href="../index.html">com.orsys.groupe4.projetplage.dao</a>
+</div>
+
+<h1>Coverage Summary for Class: UtilisateurDao (com.orsys.groupe4.projetplage.dao)</h1>
+
+<table class="coverageStats">
+
+<tr>
+  <th class="name">Class</th>
+</tr>
+  <tr>
+    <td class="name">UtilisateurDao$MockitoMock$LpW5fCQt</td>
+  </tr>
+  <tr>
+    <td class="name">UtilisateurDao$MockitoMock$LpW5fCQt$auxiliary$3MoemaCm</td>
+  </tr>
+  <tr>
+    <td class="name">UtilisateurDao$MockitoMock$LpW5fCQt$auxiliary$8hIOiFKc</td>
+  </tr>
+  <tr>
+    <td class="name">UtilisateurDao$MockitoMock$LpW5fCQt$auxiliary$VDXXPDJy</td>
+  </tr>
+<tr>
+  <td class="name"><strong>Total</strong></td>
+</tr>
+</table>
+
+<br/>
+<br/>
+
+
+<pre>
+<code class="sourceCode" id="sourceCode">&nbsp;package com.orsys.groupe4.projetplage.dao;
+&nbsp;
+&nbsp;import com.orsys.groupe4.projetplage.business.Utilisateur;
+&nbsp;import org.springframework.data.jpa.repository.JpaRepository;
+&nbsp;import org.springframework.data.jpa.repository.Query;
+&nbsp;import org.springframework.data.repository.query.Param;
+&nbsp;
+&nbsp;public interface UtilisateurDao extends JpaRepository&lt;Utilisateur, Long&gt; {
+&nbsp;    
+&nbsp;    @Query(nativeQuery = true, value = &quot;SELECT u.id FROM Utilisateur u WHERE u.email=:email&quot;)
+&nbsp;    Integer getId(@Param(&quot;email&quot;) String email);
+&nbsp;    
+&nbsp;    @Query(nativeQuery = true, value = &quot;select count(*) = 1 from concessionnaire where id =:id&quot;)
+&nbsp;    Boolean isConcessionnaire(@Param(&quot;id&quot;) Long id);
+&nbsp;    
+&nbsp;    @Query(nativeQuery = true, value = &quot;select count(*) = 1 from locataire where id =:id&quot;)
+&nbsp;    Boolean isLocataire(@Param(&quot;id&quot;) Long id);
+&nbsp;    
+&nbsp;    @Query(nativeQuery = true, value = &quot;SELECT m.sel FROM mer m where m.id=(select u.id_Sel from utilisateur u where u.id=:id)&quot;)
+&nbsp;    String getSel(@Param(&quot;id&quot;) Long id);
+&nbsp;    
+&nbsp;    @Query(nativeQuery = true, value = &quot;select count(*) = 1 from login l where l.id =(select u.id_Mdp from utilisateur u where u.id=:id) and l.mdp=:mdp&quot;)
+&nbsp;    Boolean verifLogin(@Param(&quot;id&quot;) Long id, @Param(&quot;mdp&quot;) String mdp);
+&nbsp;}
+</code>
+</pre>
+</div>
+
+<script type="text/javascript">
+(function() {
+    var msie = false, msie9 = false;
+    /*@cc_on
+      msie = true;
+      @if (@_jscript_version >= 9)
+        msie9 = true;
+      @end
+    @*/
+
+    if (!msie || msie && msie9) {
+      hljs.highlightAll()
+      hljs.initLineNumbersOnLoad();
+    }
+})();
+</script>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2023-02-23 16:50</div>
+</div>
+</body>
+</html>
